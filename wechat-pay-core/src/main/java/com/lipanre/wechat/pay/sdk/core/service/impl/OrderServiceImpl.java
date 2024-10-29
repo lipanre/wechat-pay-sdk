@@ -1,14 +1,22 @@
 package com.lipanre.wechat.pay.sdk.core.service.impl;
 
-import com.lipanre.wechat.pay.sdk.common.model.CreateOrderRequest;
+import com.lipanre.wechat.pay.sdk.core.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.core.service.OrderService;
-import org.springframework.stereotype.Service;
+import lombok.RequiredArgsConstructor;
 
 /**
  * 订单serviceImpl
  *
  * @author lipanre
  */
-@Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
+
+    /**
+     * 支付相关配置属性
+     */
+    private final PayProperties payProperties;
+
+
+
 }

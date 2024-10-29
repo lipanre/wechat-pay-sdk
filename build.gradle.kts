@@ -20,9 +20,9 @@ buildscript {
     }
 
     dependencies {
-        classpath("io.spring.gradle:dependency-management-plugin:1.1.6")
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.7.18")
-        classpath("io.freefair.gradle:lombok-plugin:8.10.2")
+        classpath(Plugin.SPRING_BOOT_DEPENDENCY)
+        classpath(Plugin.SPRING_BOOT_GRADLE)
+        classpath(Plugin.LOMBOK)
     }
 }
 
@@ -53,18 +53,9 @@ subprojects {
 
 
     dependencies {
-
-        ext {
-            set("mapstruct-plus.version", "1.4.5")
-            set("hutool.version", "5.8.29")
-        }
-
-        implementation(platform("cn.hutool:hutool-bom:${ext.get("hutool.version")}"))
-
-        annotationProcessor("io.github.linpeilie:mapstruct-plus-processor:${ext.get("mapstruct-plus.version")}")
-        implementation("io.github.linpeilie:mapstruct-plus:${ext.get("mapstruct-plus.version")}")
-
-
+        implementation(platform(Deps.HUTOOL_BOM))
+        annotationProcessor(Deps.MAP_STRUCT_PLUS_PROCESSOR)
+        implementation(Deps.MAP_STRUCT_PLUS)
     }
 }
 
