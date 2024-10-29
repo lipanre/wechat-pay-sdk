@@ -2,5 +2,5 @@
 
 dependencies {
     implementation(project(":wechat-pay-common"))
-    implementation(Dependencies.WECHAT_PAY_V3_HTTP_CLIENT_SDK)
+    implementation(Deps.WE_CHAT_HTTP_CLIENT_V3_SDK)
 }
