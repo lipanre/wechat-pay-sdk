@@ -1,4 +1,4 @@
 dependencies {
     implementation(project(":wechat-pay-core"))
-    implementation(Deps.SPRING_BOOT_STARTER_WEB)
+    implementation(Dependencies.SPRING_BOOT_STARTER_WEB)
 }

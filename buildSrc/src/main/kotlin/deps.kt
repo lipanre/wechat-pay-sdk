@@ -35,7 +35,7 @@ class Versions {
 
 }
 
-class Deps {
+class Dependencies {
     companion object {
         /**
          * 微信http-client sdk v3
