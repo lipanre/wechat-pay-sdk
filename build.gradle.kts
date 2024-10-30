@@ -1,3 +1,5 @@
+
+
 buildscript {
 
     repositories {
@@ -37,6 +39,8 @@ subprojects {
     apply(plugin = "io.freefair.lombok")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "maven-publish")
+
 
     configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -50,6 +54,8 @@ subprojects {
         annotationProcessor(Dependencies.MAP_STRUCT_PLUS_PROCESSOR)
         implementation(Dependencies.MAP_STRUCT_PLUS)
     }
+
+
 }
 
 
