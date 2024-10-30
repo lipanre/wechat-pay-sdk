@@ -32,6 +32,12 @@ allprojects {
         maven("https://oss.sonatype.org/content/repositories/snapshots/")
         mavenCentral()
     }
+
+    tasks.withType<JavaCompile> {
+        options.compilerArgs.add("-parameters")
+        options.compilerArgs.add("-Xlint:-options")
+        options.encoding="UTF-8"
+    }
 }
 
 subprojects {
