@@ -55,6 +55,27 @@ subprojects {
         implementation(Dependencies.MAP_STRUCT_PLUS)
     }
 
+    afterEvaluate {
+        project.extensions.getByType<PublishingExtension>().apply {
+            publications {
+                create<MavenPublication>("mavenJava") {
+                    from(components["java"])
+                    groupId = project.group.toString()
+                    artifactId = project.name
+                    version = project.version.toString()
+                }
+            }
+            repositories {
+                maven {
+                    url = uri("https://packages.aliyun.com/6721ee46cc7f222f53c841da/maven/2500548-snapshot-ycars7")
+                    credentials {
+                        username = "662367769bf402bca06965e4"
+                        password = "WbQuvKQ[oOSl"
+                    }
+                }
+            }
+        }
+    }
 
 }
 
