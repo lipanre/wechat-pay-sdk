@@ -31,6 +31,11 @@ class Versions {
          * lombok
          */
         const val LOMBOK = "8.10.2"
+
+        /**
+         * jackson
+         */
+        const val JACKSON_VERSION = "2.18.1"
     }
 
 }
@@ -52,6 +57,13 @@ class Dependencies {
          */
         const val MAP_STRUCT_PLUS_PROCESSOR = "io.github.linpeilie:mapstruct-plus-processor:${Versions.MAPSTRUCT_PLUS}"
         const val MAP_STRUCT_PLUS = "io.github.linpeilie:mapstruct-plus:${Versions.MAPSTRUCT_PLUS}"
+
+        /**
+         * jackson
+         */
+        const val JACKSON_CORE = "com.fasterxml.jackson.core:jackson-core:${Versions.JACKSON_VERSION}"
+        const val JACKSON_DATABIND = "com.fasterxml.jackson.core:jackson-databind:${Versions.JACKSON_VERSION}"
+        const val JACKSON_DATATYPE_JSR310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${Versions.JACKSON_VERSION}"
 
         /**
          * spring 相关依赖
