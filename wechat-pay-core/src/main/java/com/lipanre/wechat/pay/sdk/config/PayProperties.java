@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.config;
 
+import com.lipanre.wechat.pay.sdk.common.Constant;
 import lombok.Data;
 
 /**
@@ -35,4 +36,12 @@ public class PayProperties {
      */
     private String appid;
 
+    /**
+     * 获取回调url
+     * <br>
+     * @return 回调url
+     */
+    public String getCallbackUrl() {
+        return this.apiPrefix + Constant.PAY_SCORE_CALLBACK_URL;
+    }
 }

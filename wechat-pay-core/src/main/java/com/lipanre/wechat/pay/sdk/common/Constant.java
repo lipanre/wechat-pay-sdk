@@ -12,4 +12,9 @@ public class Constant {
      */
     public static final String API_DATE_PATTERN = "yyyyMMddHHmmss";
 
+    /**
+     * 支付分回调url
+     */
+    public static final String PAY_SCORE_CALLBACK_URL = "/pay-score/callback";
+
 }
