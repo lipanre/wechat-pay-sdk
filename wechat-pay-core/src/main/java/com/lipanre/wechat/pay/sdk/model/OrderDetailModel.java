@@ -47,4 +47,5 @@ public class OrderDetailModel extends OrderModel {
      * 商户回调地址
      */
     @JsonProperty("notify_url")
-    private String notifyUrl;}
+    private String notifyUrl;
+}

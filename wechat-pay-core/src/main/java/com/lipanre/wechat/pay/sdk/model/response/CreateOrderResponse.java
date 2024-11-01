@@ -18,13 +18,4 @@ public class CreateOrderResponse extends OrderDetailResponse {
      */
     @JsonProperty("package")
     private String token;
-
-
-    /**
-     * 是否需要用户确认
-     */
-    @JsonProperty("need_user_confirm")
-    private Boolean needUserConfirm;
-
-
 }
