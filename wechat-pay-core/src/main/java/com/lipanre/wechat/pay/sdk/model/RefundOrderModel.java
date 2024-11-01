@@ -1,8 +1,6 @@
-package com.lipanre.wechat.pay.sdk.model.request;
+package com.lipanre.wechat.pay.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lipanre.wechat.pay.sdk.model.Amount;
-import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import lombok.Data;
 
 /**

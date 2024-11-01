@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.enums.RefundChannel;
 import com.lipanre.wechat.pay.sdk.enums.RefundState;
-import com.lipanre.wechat.pay.sdk.model.Amount;
 import com.lipanre.wechat.pay.sdk.model.RefundOrderDetailModel;
 import com.lipanre.wechat.pay.sdk.model.RefundPromotionInfo;
-import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
-import com.lipanre.wechat.pay.sdk.model.request.RefundOrderModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
