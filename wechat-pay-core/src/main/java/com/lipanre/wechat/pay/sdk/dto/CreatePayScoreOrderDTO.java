@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.dto;
 
+import com.lipanre.wechat.pay.sdk.Default;
 import com.lipanre.wechat.pay.sdk.model.*;
 import com.lipanre.wechat.pay.sdk.model.request.CreatePayScoreOrderRequest;
 import io.github.linpeilie.annotations.AutoMapper;
@@ -14,7 +15,7 @@ import java.util.List;
  * @author lipanre
  */
 @Data
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = @Default)
 @AutoMapper(target = CreatePayScoreOrderRequest.class)
 public class CreatePayScoreOrderDTO {
 
