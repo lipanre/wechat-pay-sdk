@@ -11,6 +11,17 @@ import lombok.Data;
 public class PayProperties {
 
     /**
+     * 接口前缀
+     * <br>
+     * 比如：项目的接口为：
+     * <br>
+     * - http://example.com/api/{api1-path}
+     * <br>
+     * 那么apiPrefix就是：http://exmple.com/api
+     */
+    private String apiPrefix;
+
+    /**
      * 微信服务id
      * <br>
      * 获取方式：联系微信官方运营人员
