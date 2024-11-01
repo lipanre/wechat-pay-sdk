@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -15,6 +16,6 @@ public class CreatePayScorePayScoreOrderResponse extends PayScoreOrderDetailResp
     /**
      * 用于微信小程序跳转授权token
      */
-    ("package")
+    @JsonProperty("package")
     private String token;
 }
