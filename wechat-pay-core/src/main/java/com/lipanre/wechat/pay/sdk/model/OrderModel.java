@@ -23,4 +23,9 @@ public class OrderModel {
      */
     @JsonProperty("service_id")
     private String serviceId;
+
+    public void apply(String appId, String serviceId) {
+        this.appId = appId;
+        this.serviceId = serviceId;
+    }
 }
