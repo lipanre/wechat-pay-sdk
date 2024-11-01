@@ -21,25 +21,21 @@ public class RefundRequest extends RefundOrderModel {
     /**
      * 退款原因
      */
-    @JsonProperty("reason")
     private String reason;
 
     /**
      * 退款结果回调url
      */
-    @JsonProperty("notify_url")
     private String notifyUrl;
 
     /**
      * 退款资金来源
      */
-    @JsonProperty("funds_account")
     private FundsSource fundsAccount;
 
     /**
      * 退款商品
      */
-    @JsonProperty("goods_detail")
     private RefundsGoodsDetail goodsDetail;
 
 }

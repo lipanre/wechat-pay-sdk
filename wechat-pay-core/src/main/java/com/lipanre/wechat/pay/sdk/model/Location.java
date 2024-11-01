@@ -14,13 +14,11 @@ public class Location {
     /**
      * 服务开始地点
      */
-    @JsonProperty("start_location")
     private String startLocation;
 
     /**
      * 预计服务结束位置
      */
-    @JsonProperty("end_location")
     private String endLocation;
 
 }

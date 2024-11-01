@@ -26,13 +26,11 @@ public class SyncOrderRequest extends OrderModel {
     /**
      * 场景类型
      */
-    @JsonProperty("type")
     private String type;
 
     /**
      * 内容信息详情
      */
-    @JsonProperty("detail")
     private OrderInfo detail;
 
 }

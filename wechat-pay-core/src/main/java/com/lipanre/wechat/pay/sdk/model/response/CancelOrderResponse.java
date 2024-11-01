@@ -19,13 +19,11 @@ public class CancelOrderResponse extends OrderModel {
     /**
      * 商户号
      */
-    @JsonProperty("mchid")
-    private String mchId;
+    private String mchid;
 
     /**
      * 微信支付服务订单号
      */
-    @JsonProperty("order_id")
     private String orderId;
 
 }

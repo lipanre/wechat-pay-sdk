@@ -23,25 +23,21 @@ public class ModifyOrderRequest extends OrderModel {
     /**
      * 后付费项目
      */
-    @JsonProperty("post_payments")
     private List<PostPayment> postPayments;
 
     /**
      * 后付费商户优惠
      */
-    @JsonProperty("post_discounts")
     private List<PostDiscount> postDiscounts;
 
     /**
      * 总金额
      */
-    @JsonProperty("total_amount")
     private Long totalAmount;
 
     /**
      * 修改原因
      */
-    @JsonProperty("reason")
     private String reason;
 
 }

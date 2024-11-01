@@ -19,19 +19,16 @@ public class CompleteOrderRequest extends OrderDetailModel {
     /**
      * 总金额
      */
-    @JsonProperty("total_amount")
     private Long totalAmount;
 
     /**
      * 微信支付服务分账标记
      */
-    @JsonProperty("profit_sharing")
     private Boolean profitSharing;
 
     /**
      * 订单优惠标记
      */
-    @JsonProperty("goods_tag")
     private String goodsTag;
 
 }

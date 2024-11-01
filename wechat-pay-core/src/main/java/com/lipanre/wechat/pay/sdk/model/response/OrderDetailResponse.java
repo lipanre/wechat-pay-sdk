@@ -16,22 +16,18 @@ public abstract class OrderDetailResponse extends OrderDetailModel {
     /**
      * 商户号
      */
-    @JsonProperty("mchid")
-    private String mchId;
+    private String mchid;
     /**
      * 服务订单状态
      */
-    @JsonProperty("state")
     private OrderState state;
     /**
      * 订单状态说明
      */
-    @JsonProperty("state_description")
     private OrderStateDescription stateDescription;
 
     /**
      * 微信支付服务订单号
      */
-    @JsonProperty("order_id")
     private String orderId;
 }

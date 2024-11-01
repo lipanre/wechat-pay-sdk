@@ -18,13 +18,11 @@ public class CompleteOrderResponse extends OrderDetailResponse {
     /**
      * 商户收款总金额
      */
-    @JsonProperty("total_amount")
     private Long totalAmount;
 
     /**
      * 是否需要收款
      */
-    @JsonProperty("need_collection")
     private Boolean needCollection;
 
 }

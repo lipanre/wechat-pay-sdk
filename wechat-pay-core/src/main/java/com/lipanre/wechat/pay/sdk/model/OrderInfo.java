@@ -14,6 +14,5 @@ public class OrderInfo {
      * 收款成功时间
      */
     @JsonFormat(pattern = Constant.API_DATE_PATTERN)
-    @JsonProperty("paid_time")
     private LocalDateTime paidTime;
 }

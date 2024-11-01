@@ -20,38 +20,32 @@ public class CollectionDetail {
     /**
      * 收款序号
      */
-    @JsonProperty("seq")
     private Integer seq;
 
     /**
      * 单笔收款金额
      */
-    @JsonProperty("amount")
     private Long amount;
 
     /**
      * 收款成功渠道
      */
-    @JsonProperty("paid_type")
     private PaidType paidType;
 
     /**
      * 收款成功时间
      */
     @JsonFormat(pattern = Constant.API_DATE_PATTERN)
-    @JsonProperty("paid_time")
     private LocalDateTime paidTime;
 
     /**
      * 微信支付交易单号
      */
-    @JsonProperty("transaction_id")
     private String transactionId;
 
     /**
      * 优惠功能
      */
-    @JsonProperty("promotion_detail")
     private List<Promotion> promotionDetail;
 
 }

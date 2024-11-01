@@ -17,14 +17,12 @@ public class CreateOrderRequest extends OrderDetailModel {
     /**
      * 用户标识
      */
-    @JsonProperty("openid")
-    private String openId;
+    private String openid;
 
 
     /**
      * 是否需要用户确认
      */
-    @JsonProperty("need_user_confirm")
     private Boolean needUserConfirm;
 
 

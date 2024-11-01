@@ -1,10 +1,10 @@
-package com.lipanre.wechat.pay.sdk.factory;
+package com.lipanre.wechat.pay.sdk.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import lombok.SneakyThrows;
 
 /**
@@ -27,6 +27,9 @@ public class JsonUtil {
 
         // 如果字段为空，则不进行序列化
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
+        // json中下划线转驼峰，对象转json时使用下划线
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
 
         // 反序列化如果字段不存在不报错
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

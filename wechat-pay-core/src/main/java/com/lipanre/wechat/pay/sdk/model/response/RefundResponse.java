@@ -26,32 +26,27 @@ public class RefundResponse extends RefundOrderDetailModel {
     /**
      * 退款渠道
      */
-    @JsonProperty("channel")
     private RefundChannel channel;
 
 
     /**
      * 退款创建时间
      */
-    @JsonProperty("create_time")
     private LocalDateTime createTime;
 
     /**
      * 退款状态
      */
-    @JsonProperty("status")
     private RefundState status;
 
     /**
      * 资金账户
      */
-    @JsonProperty("funds_account")
     private FundsAccount fundsAccount;
 
     /**
      * 优惠退款信息
      */
-    @JsonProperty("promotion_detail")
     private List<RefundPromotionInfo> promotionDetail;
 
 }

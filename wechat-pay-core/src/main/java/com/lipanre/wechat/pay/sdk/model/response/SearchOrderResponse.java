@@ -18,25 +18,21 @@ public class SearchOrderResponse extends OrderDetailResponse {
     /**
      * 商户收款总金额
      */
-    @JsonProperty("total_amount")
     private Long totalAmount;
 
     /**
      * 是否需要收款
      */
-    @JsonProperty("need_collection")
     private Boolean needCollection;
 
     /**
      * 收款信息
      */
-    @JsonProperty("collection")
     private Collection collection;
 
     /**
      * 用户标识
      */
-    @JsonProperty("openid")
-    private String openId;
+    private String openid;
 
 }

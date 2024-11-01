@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -16,13 +15,11 @@ public class RefundsOrderInfo {
     /**
      * 出资账户类型
      */
-    @JsonProperty("account")
     private String account;
 
     /**
      * 出资金额
      */
-    @JsonProperty("amount")
     private Long amount;
 
 }

@@ -16,7 +16,6 @@ public class RefundSearchRequest {
     /**
      * 商户退款单号
      */
-    @JsonProperty("out_refund_no")
     private String outRefundNo;
 
 }

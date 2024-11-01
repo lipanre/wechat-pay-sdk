@@ -19,7 +19,6 @@ public class CancelOrderRequest extends OrderModel {
     /**
      * 取消原因
      */
-    @JsonProperty("reason")
     private String reason;
 
 }

@@ -17,7 +17,6 @@ public class SearchOrderRequest extends OrderModel {
     /**
      * 回跳查询ID
      */
-    @JsonProperty("query_id")
     private String queryId;
 
 }
