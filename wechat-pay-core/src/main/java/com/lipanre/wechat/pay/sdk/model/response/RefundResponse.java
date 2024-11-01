@@ -5,6 +5,7 @@ import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.enums.RefundChannel;
 import com.lipanre.wechat.pay.sdk.enums.RefundState;
 import com.lipanre.wechat.pay.sdk.model.Amount;
+import com.lipanre.wechat.pay.sdk.model.RefundOrderDetailModel;
 import com.lipanre.wechat.pay.sdk.model.RefundPromotionInfo;
 import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import com.lipanre.wechat.pay.sdk.model.request.RefundOrderModel;
@@ -23,19 +24,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class RefundResponse extends RefundOrderModel {
-
-    /**
-     * 微信支付退款单号
-     */
-    @JsonProperty("refund_id")
-    private String refundId;
-
-    /**
-     * 商户订单号
-     */
-    @JsonProperty("out_trade_no")
-    private String outTradeNo;
+public class RefundResponse extends RefundOrderDetailModel {
 
     /**
      * 退款渠道
@@ -43,18 +32,6 @@ public class RefundResponse extends RefundOrderModel {
     @JsonProperty("channel")
     private RefundChannel channel;
 
-
-    /**
-     * 退款入账账户
-     */
-    @JsonProperty("user_received_account")
-    private String userReceivedAccount;
-
-    /**
-     * 退款成功时间
-     */
-    @JsonProperty("success_time")
-    private LocalDateTime successTime;
 
     /**
      * 退款创建时间
@@ -80,9 +57,4 @@ public class RefundResponse extends RefundOrderModel {
     @JsonProperty("promotion_detail")
     private List<RefundPromotionInfo> promotionDetail;
 
-    /**
-     * 金额信息
-     */
-    @JsonProperty("amount")
-    private Amount amount;
 }

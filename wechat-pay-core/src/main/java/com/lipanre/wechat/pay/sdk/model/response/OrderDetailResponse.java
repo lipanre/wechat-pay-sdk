@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.OrderState;
 import com.lipanre.wechat.pay.sdk.enums.OrderStateDescription;
 import com.lipanre.wechat.pay.sdk.model.OrderDetailModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * @author lipanre
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public abstract class OrderDetailResponse extends OrderDetailModel {
     /**
      * 商户号
