@@ -6,7 +6,7 @@ import lombok.Data;
  * @author lipanre
  */
 @Data
-public class OrderModel {
+public abstract class OrderModel {
     /**
      * 商户服务订单号
      */

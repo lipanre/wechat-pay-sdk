@@ -17,7 +17,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ModifyPaySocreOrderRequest extends OrderModel {
+public class ModifyPayScoreOrderRequest extends OrderModel {
 
     /**
      * 后付费项目

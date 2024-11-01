@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,7 +10,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class OrderDetailModel extends OrderModel {
+public abstract class OrderDetailModel extends OrderModel {
     /**
      * 服务信息
      */
