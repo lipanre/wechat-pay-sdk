@@ -1,6 +1,8 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lipanre.wechat.pay.sdk.common.Constant;
 import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.enums.RefundChannel;
 import com.lipanre.wechat.pay.sdk.enums.RefundState;
@@ -32,6 +34,7 @@ public class RefundResponse extends RefundOrderDetailModel {
     /**
      * 退款创建时间
      */
+    @JsonFormat(pattern = Constant.API_DATE_PATTERN)
     private LocalDateTime createTime;
 
     /**

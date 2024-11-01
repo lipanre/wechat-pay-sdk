@@ -1,5 +1,7 @@
 package com.lipanre.wechat.pay.sdk.notify;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lipanre.wechat.pay.sdk.common.Constant;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -22,6 +24,7 @@ public class NotifyRequest {
     /**
      * 通知创建时间
      */
+    @JsonFormat(pattern = Constant.API_DATE_PATTERN)
     private LocalDateTime createTime;
 
     /**

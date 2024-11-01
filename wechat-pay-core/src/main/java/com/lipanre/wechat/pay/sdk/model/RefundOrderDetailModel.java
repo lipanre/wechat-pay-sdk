@@ -1,6 +1,7 @@
 package com.lipanre.wechat.pay.sdk.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.lipanre.wechat.pay.sdk.common.Constant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -31,6 +32,7 @@ public class RefundOrderDetailModel extends RefundOrderModel {
     /**
      * 退款成功时间
      */
+    @JsonFormat(pattern = Constant.API_DATE_PATTERN)
     private LocalDateTime successTime;
     /**
      * 金额信息
