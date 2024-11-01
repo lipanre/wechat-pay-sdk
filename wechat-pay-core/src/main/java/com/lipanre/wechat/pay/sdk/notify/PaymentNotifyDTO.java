@@ -10,7 +10,7 @@ import lombok.Data;
  * {@code date} 2024/11/1 13:34
  */
 @Data
-public class PaymentCallbackDTO {
+public class PaymentNotifyDTO {
 
 
 

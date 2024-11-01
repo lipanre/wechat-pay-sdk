@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class RefundCallbackDTO extends RefundOrderDetailModel {
+public class RefundNotifyDTO extends RefundOrderDetailModel {
 
     /**
      * 直连商户号

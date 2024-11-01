@@ -1,7 +1,6 @@
 package com.lipanre.wechat.pay.sdk.notify;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lipanre.wechat.pay.sdk.enums.CallbackEventType;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
  * {@code date} 2024/11/1 11:38
  */
 @Data
-public class CallbackRequest {
+public class NotifyRequest {
 
     /**
      * 通知ID
@@ -32,7 +31,7 @@ public class CallbackRequest {
      * 通知类型
      */
     @JsonProperty("event_type")
-    private CallbackEventType eventType;
+    private NotifyEventType eventType;
 
     /**
      * 通知简要说明
@@ -50,7 +49,7 @@ public class CallbackRequest {
      * 通知数据
      */
     @JsonProperty("resource")
-    private CallbackResource resource;
+    private NotifyResource resource;
 
 
 }

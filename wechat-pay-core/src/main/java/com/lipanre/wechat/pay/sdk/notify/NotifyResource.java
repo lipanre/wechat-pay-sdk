@@ -11,7 +11,7 @@ import lombok.Data;
  * {@code date} 2024/11/1 12:04
  */
 @Data
-public class CallbackResource {
+public class NotifyResource {
 
     /**
      * 加密算法类型

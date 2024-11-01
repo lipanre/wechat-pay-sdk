@@ -1,4 +1,4 @@
-package com.lipanre.wechat.pay.sdk.enums;
+package com.lipanre.wechat.pay.sdk.notify;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Optional;
  * {@code date} 2024/11/1 11:45
  */
 @RequiredArgsConstructor
-public enum CallbackEventType {
+public enum NotifyEventType {
 
     /**
      * 退款成功通知
@@ -36,8 +36,8 @@ public enum CallbackEventType {
     private final String code;
 
     @JsonCreator
-    public static CallbackEventType getEventType(String code) {
-        Optional<CallbackEventType> first = Arrays.stream(values()).filter(e -> e.code.equals(code)).findFirst();
+    public static NotifyEventType getEventType(String code) {
+        Optional<NotifyEventType> first = Arrays.stream(values()).filter(e -> e.code.equals(code)).findFirst();
         return first.orElseThrow(() -> new RuntimeException("not support current callback event-type: " + code));
     }
 }
