@@ -1,11 +1,11 @@
 package com.lipanre.wechat.pay.sdk.factory;
 
 /**
- * http url工厂类，用于生产接口url
+ * 支付分订单http url工厂类，用于生产接口url
  *
  * @author lipanre
  */
-public class UrlFactory {
+public class PayScoreOrderUrlFactory {
 
     /**
      * 微信http请求host
