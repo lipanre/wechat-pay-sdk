@@ -5,5 +5,7 @@ package com.lipanre.wechat.pay.sdk.service;
  *
  * @author lipanre
  */
-public interface PayScoreConfirmOrderService {
+public interface PayScoreConfirmOrderService extends PayScoreOrderService{
+
+
 }
