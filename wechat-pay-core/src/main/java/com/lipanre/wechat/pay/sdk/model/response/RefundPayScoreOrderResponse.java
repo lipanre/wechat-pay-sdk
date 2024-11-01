@@ -1,7 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.common.Constant;
 import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.enums.RefundChannel;
@@ -23,7 +22,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class RefundResponse extends RefundOrderDetailModel {
+public class RefundPayScoreOrderResponse extends RefundOrderDetailModel {
 
     /**
      * 退款渠道

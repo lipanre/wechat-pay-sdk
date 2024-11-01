@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.FundsSource;
 import com.lipanre.wechat.pay.sdk.model.RefundOrderModel;
 import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
@@ -16,7 +15,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class RefundRequest extends RefundOrderModel {
+public class RefundPayScoreRequest extends RefundOrderModel {
 
     /**
      * 退款原因

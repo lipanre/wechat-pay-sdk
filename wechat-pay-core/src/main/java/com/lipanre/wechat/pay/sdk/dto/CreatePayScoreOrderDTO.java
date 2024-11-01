@@ -1,7 +1,7 @@
 package com.lipanre.wechat.pay.sdk.dto;
 
 import com.lipanre.wechat.pay.sdk.model.*;
-import com.lipanre.wechat.pay.sdk.model.request.CreateOrderRequest;
+import com.lipanre.wechat.pay.sdk.model.request.CreatePayScoreOrderRequest;
 import io.github.linpeilie.annotations.AutoMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +9,14 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 /**
- * 创建订单DTO
+ * 创建支付分订单DTO
  *
  * @author lipanre
  */
 @Data
 @RequiredArgsConstructor
-@AutoMapper(target = CreateOrderRequest.class)
-public class CreateOrderDTO {
+@AutoMapper(target = CreatePayScoreOrderRequest.class)
+public class CreatePayScoreOrderDTO {
 
     /**
      * 商户服务单号
@@ -73,7 +73,7 @@ public class CreateOrderDTO {
      */
     private String notifyUrl;
 
-    public CreateOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, String openId) {
+    public CreatePayScoreOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, String openId) {
         this.outOrderNo = outOrderNo;
         this.serviceIntroduction = serviceIntroduction;
         this.timeRange = timeRange;
@@ -82,7 +82,7 @@ public class CreateOrderDTO {
         this.needUserConfirm = false;
     }
 
-    public CreateOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, List<PostPayment> postPayments, List<PostDiscount> postDiscounts, Location location, String attach, String notifyUrl) {
+    public CreatePayScoreOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, List<PostPayment> postPayments, List<PostDiscount> postDiscounts, Location location, String attach, String notifyUrl) {
         this.outOrderNo = outOrderNo;
         this.serviceIntroduction = serviceIntroduction;
         this.timeRange = timeRange;
@@ -94,7 +94,7 @@ public class CreateOrderDTO {
         this.notifyUrl = notifyUrl;
     }
 
-    public CreateOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, List<PostPayment> postPayments, List<PostDiscount> postDiscounts, Location location, String attach, String notifyUrl, String openId) {
+    public CreatePayScoreOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, List<PostPayment> postPayments, List<PostDiscount> postDiscounts, Location location, String attach, String notifyUrl, String openId) {
         this.outOrderNo = outOrderNo;
         this.serviceIntroduction = serviceIntroduction;
         this.timeRange = timeRange;

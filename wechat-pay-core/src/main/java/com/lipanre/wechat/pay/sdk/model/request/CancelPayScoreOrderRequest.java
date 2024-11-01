@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.model.OrderModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +13,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class CancelOrderRequest extends OrderModel {
+public class CancelPayScoreOrderRequest extends OrderModel {
 
     /**
      * 取消原因

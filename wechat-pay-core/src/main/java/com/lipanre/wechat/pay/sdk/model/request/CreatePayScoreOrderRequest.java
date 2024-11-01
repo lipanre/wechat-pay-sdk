@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.model.OrderDetailModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class CreateOrderRequest extends OrderDetailModel {
+public class CreatePayScoreOrderRequest extends OrderDetailModel {
 
     /**
      * 用户标识

@@ -1,19 +1,24 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.model.Collection;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 查询订单响应
+ * {@code description}
+ * 同步订单响应
  *
- * @author lipanre
+ * <br>
+ * {@code date} 2024/11/1 10:32
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SearchOrderResponse extends OrderDetailResponse {
+public class SyncPayScoreOrderResponse extends PayScoreOrderDetailResponse {
 
+    /**
+     * 用户标识
+     */
+    private String openid;
 
     /**
      * 商户收款总金额
@@ -29,10 +34,5 @@ public class SearchOrderResponse extends OrderDetailResponse {
      * 收款信息
      */
     private Collection collection;
-
-    /**
-     * 用户标识
-     */
-    private String openid;
 
 }

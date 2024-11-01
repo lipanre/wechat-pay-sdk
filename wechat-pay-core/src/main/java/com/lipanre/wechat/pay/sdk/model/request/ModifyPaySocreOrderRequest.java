@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.model.OrderModel;
 import com.lipanre.wechat.pay.sdk.model.PostDiscount;
 import com.lipanre.wechat.pay.sdk.model.PostPayment;
@@ -18,7 +17,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class ModifyOrderRequest extends OrderModel {
+public class ModifyPaySocreOrderRequest extends OrderModel {
 
     /**
      * 后付费项目
