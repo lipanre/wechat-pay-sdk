@@ -5,12 +5,14 @@ import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.enums.RefundChannel;
 import com.lipanre.wechat.pay.sdk.enums.RefundState;
 import com.lipanre.wechat.pay.sdk.model.Amount;
+import com.lipanre.wechat.pay.sdk.model.RefundPromotionInfo;
 import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import com.lipanre.wechat.pay.sdk.model.request.RefundOrderModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * {@code description}
@@ -76,7 +78,7 @@ public class RefundResponse extends RefundOrderModel {
      * 优惠退款信息
      */
     @JsonProperty("promotion_detail")
-    private RefundsGoodsDetail promotionDetail;
+    private List<RefundPromotionInfo> promotionDetail;
 
     /**
      * 金额信息

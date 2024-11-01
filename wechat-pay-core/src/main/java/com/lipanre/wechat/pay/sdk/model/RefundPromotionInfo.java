@@ -1,9 +1,11 @@
-package com.lipanre.wechat.pay.sdk;
+package com.lipanre.wechat.pay.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.PromotionScope;
 import com.lipanre.wechat.pay.sdk.enums.PromotionType;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * {@code description}
@@ -34,10 +36,22 @@ public class RefundPromotionInfo {
     private PromotionType type;
 
     /**
+     * 优惠券面额
+     */
+    @JsonProperty("amount")
+    private Long amount;
+
+    /**
      * 优惠退款金额
      */
     @JsonProperty("refund_amount")
     private Long refundAmount;
+
+    /**
+     * 商品列表
+     */
+    @JsonProperty("goods_detail")
+    private List<RefundsGoodsDetail> goodsDetail;
 
 
 

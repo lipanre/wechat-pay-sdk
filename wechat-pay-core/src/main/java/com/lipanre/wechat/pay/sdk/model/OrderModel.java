@@ -1,10 +1,12 @@
 package com.lipanre.wechat.pay.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * @author lipanre
  */
+@Data
 public class OrderModel {
     /**
      * 商户服务订单号

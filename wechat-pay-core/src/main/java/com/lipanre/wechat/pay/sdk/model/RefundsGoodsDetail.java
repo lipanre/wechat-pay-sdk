@@ -1,6 +1,7 @@
 package com.lipanre.wechat.pay.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * {@code description}
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * <br>
  * {@code date} 2024/11/1 10:50
  */
+@Data
 public class RefundsGoodsDetail {
 
     /**

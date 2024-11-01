@@ -1,12 +1,16 @@
 package com.lipanre.wechat.pay.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 /**
  * @author lipanre
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class OrderDetailModel extends OrderModel {
     /**
      * 服务信息
