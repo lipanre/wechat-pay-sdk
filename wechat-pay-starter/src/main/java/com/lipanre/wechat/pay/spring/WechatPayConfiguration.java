@@ -1,8 +1,15 @@
 package com.lipanre.wechat.pay.spring;
 
+import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.WechatPayListener;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
+import com.lipanre.wechat.pay.sdk.service.PayScoreConfirmOrderService;
+import com.lipanre.wechat.pay.sdk.service.PayScoreNoConfirmOrderService;
+import com.lipanre.wechat.pay.sdk.service.PayScoreOrderService;
+import com.lipanre.wechat.pay.sdk.service.impl.PayScoreConfirmOrderServiceImpl;
+import com.lipanre.wechat.pay.sdk.service.impl.PayScoreNoConfirmOrderServiceImpl;
+import com.lipanre.wechat.pay.sdk.service.impl.PayScoreOrderServiceImpl;
 import com.wechat.pay.contrib.apache.httpclient.WechatPayHttpClientBuilder;
 import com.wechat.pay.contrib.apache.httpclient.auth.PrivateKeySigner;
 import com.wechat.pay.contrib.apache.httpclient.auth.Verifier;
@@ -14,6 +21,8 @@ import com.wechat.pay.contrib.apache.httpclient.exception.NotFoundException;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationHandler;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationRequest;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
+import io.github.linpeilie.Converter;
+import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -153,10 +162,74 @@ public class WechatPayConfiguration {
         return new WechatPayCallbackHandler(wechatPayListener);
     }
 
+    /**
+     * 微信支付回调controller
+     *
+     * @param notificationHandler 通知handler
+     * @param handler 数据处理handler
+     * @param notificationRequestBuilder 通知请求对象构建器
+     * @return controller
+     */
     @Bean
     public WechatPayCallbackController wechatPayCallbackController(NotificationHandler notificationHandler,
                                                                    WechatPayCallbackHandler handler,
                                                                    NotificationRequest.Builder notificationRequestBuilder) {
         return new WechatPayCallbackController(notificationHandler, handler, notificationRequestBuilder);
+    }
+
+    /**
+     * http-client对象
+     *
+     * @param httpClient http-client对象
+     * @return http-service
+     */
+    @Bean
+    public HttpService httpService(HttpClient httpClient) {
+        return new HttpService(httpClient);
+    }
+
+    /**
+     * 支付分订单service
+     *
+     * @param payProperties 支付相关属性
+     * @param converter 类型转换器
+     * @param httpService http-service
+     * @return 支付分订单service
+     */
+    @Bean
+    public PayScoreOrderService payScoreOrderService(PayProperties payProperties,
+                                                     Converter converter,
+                                                     HttpService httpService) {
+        return new PayScoreOrderServiceImpl(payProperties, converter, httpService);
+    }
+
+    /**
+     * 支付分需确认订单serviceImpl
+     *
+     * @param payProperties 支付相关属性
+     * @param converter 类型转换器
+     * @param httpService http-service
+     * @return 支付分订单-需确认 service
+     */
+    @Bean
+    public PayScoreConfirmOrderService payScoreConfirmOrderService(PayProperties payProperties,
+                                                                   Converter converter,
+                                                                   HttpService httpService) {
+        return new PayScoreConfirmOrderServiceImpl(payProperties, converter, httpService);
+    }
+
+    /**
+     * 支付分无需确认订单serviceImpl
+     *
+     * @param payProperties 支付相关属性
+     * @param converter 类型转换器
+     * @param httpService http-service
+     * @return 支付分订单-无需确认 service
+     */
+    @Bean
+    public PayScoreNoConfirmOrderService payScoreNoConfirmOrderService(PayProperties payProperties,
+                                                                       Converter converter,
+                                                                       HttpService httpService) {
+        return new PayScoreNoConfirmOrderServiceImpl(payProperties, converter, httpService);
     }
 }
