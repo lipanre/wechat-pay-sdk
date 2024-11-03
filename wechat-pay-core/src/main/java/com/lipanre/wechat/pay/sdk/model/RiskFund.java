@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model;
 
+import com.lipanre.wechat.pay.sdk.enums.RiskFundType;
 import lombok.Data;
 
 /**
@@ -12,7 +13,7 @@ public class RiskFund {
     /**
      * 风险金名称
      */
-    private String name;
+    private RiskFundType name;
 
     /**
      * 风险金额
