@@ -7,6 +7,8 @@ import com.lipanre.wechat.pay.sdk.util.JsonUtil;
 import com.wechat.pay.contrib.apache.httpclient.notification.Notification;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Objects;
+
 /**
  * 微信支付回调handler
  *
@@ -25,6 +27,7 @@ public class WechatPayCallbackHandler {
      */
     @SuppressWarnings("unchecked")
     public <T extends CallbackInfo> void handle(Notification request) {
+        if (Objects.isNull(wechatPayListener)) return;
         NotifyEventType eventType = NotifyEventType.getEventType(request.getEventType());
         String json = request.getDecryptData();
         T callbackInfo = (T) JsonUtil.fromJson(json, eventType.getClazz());

@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.spring;
 
+import com.lipanre.wechat.pay.sdk.WechatPayListener;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.wechat.pay.contrib.apache.httpclient.WechatPayHttpClientBuilder;
@@ -129,5 +130,33 @@ public class WechatPayConfiguration {
     @Bean
     public NotificationRequest.Builder notificationRequestBuilder(MerchantProperties merchantProperties) {
         return new NotificationRequest.Builder().withSerialNumber(merchantProperties.getApiSerialNum());
+    }
+
+    /**
+     * 微信支付异常处理器
+     *
+     * @return 微信支付异常处理器对象
+     */
+    @Bean
+    public WechatPayControllerAdvice wechatPayControllerAdvice() {
+        return new WechatPayControllerAdvice();
+    }
+
+    /**
+     * 微信回调处理器
+     *
+     * @param wechatPayListener 微信支付监听器
+     * @return 微信回调处理器对象
+     */
+    @Bean
+    public WechatPayCallbackHandler wechatPayCallbackHandler(WechatPayListener wechatPayListener) {
+        return new WechatPayCallbackHandler(wechatPayListener);
+    }
+
+    @Bean
+    public WechatPayCallbackController wechatPayCallbackController(NotificationHandler notificationHandler,
+                                                                   WechatPayCallbackHandler handler,
+                                                                   NotificationRequest.Builder notificationRequestBuilder) {
+        return new WechatPayCallbackController(notificationHandler, handler, notificationRequestBuilder);
     }
 }

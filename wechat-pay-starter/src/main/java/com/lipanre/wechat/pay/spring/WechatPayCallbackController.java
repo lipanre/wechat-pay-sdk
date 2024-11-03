@@ -1,7 +1,6 @@
 package com.lipanre.wechat.pay.spring;
 
 import com.lipanre.wechat.pay.sdk.common.Constant;
-import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.notify.NotifyResponse;
 import com.wechat.pay.contrib.apache.httpclient.exception.ParseException;
 import com.wechat.pay.contrib.apache.httpclient.exception.ValidationException;
@@ -26,8 +25,6 @@ import java.util.concurrent.CompletableFuture;
 public class WechatPayCallbackController {
 
     private final NotificationHandler notificationHandler;
-
-    private final MerchantProperties merchantProperties;
 
     private final WechatPayCallbackHandler handler;
 
