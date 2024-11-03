@@ -1,6 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
-import com.lipanre.wechat.pay.sdk.enums.FundsSource;
+import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.model.RefundOrderModel;
 import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class RefundPayScoreRequest extends RefundOrderModel {
     /**
      * 退款资金来源
      */
-    private FundsSource fundsAccount;
+    private FundsAccount fundsAccount;
 
     /**
      * 退款商品

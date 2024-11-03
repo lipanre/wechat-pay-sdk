@@ -1,18 +1,19 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
+import com.lipanre.wechat.pay.sdk.model.Collection;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * {@code description}
- * 完结订单响应
+ * 修改订单响应
  *
  * <br>
- * {@code date} 2024/11/1 10:19
+ * {@code date} 2024/11/1 10:04
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class CompletePayScorePayScoreOrderResponse extends PayScoreOrderDetailResponse {
+public class ModifyPayScoreOrderResponse extends PayScoreOrderDetailResponse {
 
     /**
      * 商户收款总金额
@@ -23,5 +24,12 @@ public class CompletePayScorePayScoreOrderResponse extends PayScoreOrderDetailRe
      * 是否需要收款
      */
     private Boolean needCollection;
+
+    /**
+     * 收款信息
+     */
+    private Collection collection;
+
+
 
 }

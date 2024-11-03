@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class CreatePayScorePayScoreOrderResponse extends PayScoreOrderDetailResponse {
+public class CreatePayScoreOrderResponse extends PayScoreOrderDetailResponse {
 
     /**
      * 用于微信小程序跳转授权token
