@@ -70,6 +70,8 @@ class Dependencies {
          */
         const val SPRING_BOOT_STARTER = "org.springframework.boot:spring-boot-starter"
         const val SPRING_BOOT_STARTER_WEB = "org.springframework.boot:spring-boot-starter-web"
+        const val SPRING_BOOT_CONFIGURATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
+        const val SPRING_BOOT_AUTOCONFIGURE_PROCESSOR = "org.springframework.boot:spring-boot-autoconfigure-processor"
     }
 }
 
