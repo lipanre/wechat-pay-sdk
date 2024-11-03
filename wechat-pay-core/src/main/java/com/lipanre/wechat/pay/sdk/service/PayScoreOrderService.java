@@ -17,4 +17,5 @@ public interface PayScoreOrderService {
      */
     CreatePayScorePayScoreOrderResponse createOrder(CreatePayScoreOrderDTO createPayScoreOrderDTO);
 
+
 }
