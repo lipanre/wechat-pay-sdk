@@ -57,6 +57,7 @@ class Dependencies {
          */
         const val MAP_STRUCT_PLUS_PROCESSOR = "io.github.linpeilie:mapstruct-plus-processor:${Versions.MAPSTRUCT_PLUS}"
         const val MAP_STRUCT_PLUS = "io.github.linpeilie:mapstruct-plus:${Versions.MAPSTRUCT_PLUS}"
+        const val MAP_STRUCT_PLUS_STATER = "io.github.linpeilie:mapstruct-plus-spring-boot-starter:${Versions.MAPSTRUCT_PLUS}"
 
         /**
          * jackson
