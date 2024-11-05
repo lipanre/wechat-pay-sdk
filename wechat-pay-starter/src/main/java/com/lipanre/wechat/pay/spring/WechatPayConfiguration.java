@@ -24,6 +24,7 @@ import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
 import io.github.linpeilie.Converter;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -159,7 +160,7 @@ public class WechatPayConfiguration {
      * @return 微信回调处理器对象
      */
     @Bean
-    public WechatPayCallbackHandler wechatPayCallbackHandler(WechatPayListener wechatPayListener) {
+    public WechatPayCallbackHandler wechatPayCallbackHandler(@Autowired(required = false) WechatPayListener wechatPayListener) {
         return new WechatPayCallbackHandler(wechatPayListener);
     }
 
