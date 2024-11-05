@@ -1,7 +1,8 @@
 package com.lipanre.wechat.pay.sdk.config;
 
-import jdk.internal.loader.Resource;
 import lombok.Data;
+
+import java.io.File;
 
 /**
  * 商户相关属性
@@ -31,7 +32,7 @@ public class MerchantProperties {
      * <br>
      * 文件获取地址：<a href="https://wechatpay-api.gitbook.io/wechatpay-api-v3/ren-zheng/zheng-shu#shang-hu-api-zheng-shu">获取商户API私钥文件</a>
      */
-    private Resource apiPrivateKeyFile;
+    private File apiPrivateKeyFile;
 
     /**
      * 商户apikey

@@ -30,6 +30,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 
@@ -72,7 +73,7 @@ public class WechatPayConfiguration {
      */
     @Bean
     public PrivateKey privateKey(MerchantProperties merchantProperties) throws IOException {
-        return PemUtil.loadPrivateKey(merchantProperties.getApiPrivateKeyFile().getInputStream());
+        return PemUtil.loadPrivateKey(Files.newInputStream(merchantProperties.getApiPrivateKeyFile().toPath()));
     }
 
     /**
