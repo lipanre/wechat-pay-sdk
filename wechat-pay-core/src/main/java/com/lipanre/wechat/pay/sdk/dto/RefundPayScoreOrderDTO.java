@@ -2,7 +2,7 @@ package com.lipanre.wechat.pay.sdk.dto;
 
 import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.model.Amount;
-import com.lipanre.wechat.pay.sdk.model.GoodsDetail;
+import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
@@ -49,6 +49,6 @@ public class RefundPayScoreOrderDTO {
      * 对象内部的信息参考文档进行填充：<br>
      * <a href="https://pay.weixin.qq.com/wiki/doc/apiv3/apis/chapter6_1_26.shtml">申请退款</a>
      */
-    private List<GoodsDetail> goodsDetail;
+    private List<RefundsGoodsDetail> goodsDetail;
 
 }

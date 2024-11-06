@@ -6,6 +6,8 @@ import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 /**
  * {@code description}
  * 退款请求
@@ -35,6 +37,6 @@ public class RefundPayScoreRequest extends RefundOrderModel {
     /**
      * 退款商品
      */
-    private RefundsGoodsDetail goodsDetail;
+    private List<RefundsGoodsDetail> goodsDetail;
 
 }

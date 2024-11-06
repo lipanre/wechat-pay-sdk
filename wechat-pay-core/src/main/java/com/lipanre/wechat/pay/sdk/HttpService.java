@@ -4,6 +4,7 @@ import com.lipanre.wechat.pay.sdk.util.JsonUtil;
 import com.lipanre.wechat.pay.sdk.util.StrUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,6 +18,8 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -24,6 +27,7 @@ import java.util.Objects;
  *
  * @author lipanre
  */
+@Slf4j
 @RequiredArgsConstructor
 public class HttpService {
 
@@ -31,6 +35,17 @@ public class HttpService {
      * http-client对象
      */
     private final HttpClient httpClient;
+
+    /**
+     * 通用的请求头map
+     */
+    private static final Map<String, String> COMMON_HEADERS = new HashMap<>();
+
+    static {
+        // 初始化通用的header缓存
+        COMMON_HEADERS.put("Content-Type", "application/json");
+        COMMON_HEADERS.put("Accept", "application/json");
+    }
 
     /**
      * 发起post请求
@@ -74,9 +89,22 @@ public class HttpService {
      * @throws IOException 请求异常
      */
     private <T> T request(Class<T> clazz, HttpRequestBase httpRequest) throws IOException {
+        setHeaders(httpRequest);
         HttpResponse response = httpClient.execute(httpRequest);
-        return JsonUtil.fromJson(EntityUtils.toString(response.getEntity()), clazz);
+        String json = EntityUtils.toString(response.getEntity());
+        log.info("微信支付相关请求响应内容: {}", json);
+        return JsonUtil.fromJson(json, clazz);
     }
+
+    /**
+     * 设置请求头
+     *
+     * @param request 请求对象
+     */
+    private static void setHeaders(HttpRequestBase request) {
+        COMMON_HEADERS.forEach(request::setHeader);
+    }
+
 
     /**
      * 创建一个http请求entity对象

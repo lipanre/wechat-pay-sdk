@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.service.impl;
 
+import com.lipanre.wechat.pay.sdk.Converter;
 import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.CancelPayScoreOrderDTO;
@@ -16,8 +17,8 @@ import com.lipanre.wechat.pay.sdk.model.response.CompletePayScoreOrderResponse;
 import com.lipanre.wechat.pay.sdk.model.response.CreatePayScoreOrderResponse;
 import com.lipanre.wechat.pay.sdk.model.response.RefundPayScoreOrderResponse;
 import com.lipanre.wechat.pay.sdk.service.PayScoreOrderService;
-import io.github.linpeilie.Converter;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 
 /**
  * 订单serviceImpl
@@ -33,19 +34,19 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
     private final PayProperties payProperties;
 
     /**
-     * 对象转换器
-     */
-    private final Converter converter;
-
-    /**
      * http服务对象
      */
     private final HttpService httpService;
 
+    /**
+     * 对象转换器
+     */
+    protected final Converter converter = Mappers.getMapper(Converter.class);
+
 
     @Override
     public CreatePayScoreOrderResponse createOrder(CreatePayScoreOrderDTO createPayScoreOrderDTO) {
-        CreatePayScoreOrderRequest request = converter.convert(createPayScoreOrderDTO, CreatePayScoreOrderRequest.class);
+        CreatePayScoreOrderRequest request = converter.convert(createPayScoreOrderDTO);
         request.apply(payProperties.getAppid(), payProperties.getServiceId());
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getCreateOrderUrl(), request, CreatePayScoreOrderResponse.class);
@@ -53,14 +54,14 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
 
     @Override
     public CancelPayScoreOrderResponse cancelOrder(String outOrderNo, CancelPayScoreOrderDTO cancelPayScoreOrderDTO) {
-        CancelPayScoreOrderRequest request = converter.convert(cancelPayScoreOrderDTO, CancelPayScoreOrderRequest.class);
+        CancelPayScoreOrderRequest request = converter.convert(cancelPayScoreOrderDTO);
         request.apply(payProperties.getAppid(), payProperties.getServiceId());
         return httpService.post(PayScoreOrderUrlFactory.getCancelOrderUrl(outOrderNo), request, CancelPayScoreOrderResponse.class);
     }
 
     @Override
     public CompletePayScoreOrderResponse completeOrder(String outOrderNo, CompletePayScoreOrderDTO completePayScoreOrderDTO) {
-        CompletePayScoreOrderRequest request = converter.convert(completePayScoreOrderDTO, CompletePayScoreOrderRequest.class);
+        CompletePayScoreOrderRequest request = converter.convert(completePayScoreOrderDTO);
         request.apply(payProperties.getAppid(), payProperties.getServiceId());
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getCompleteOrderUrl(outOrderNo), request, CompletePayScoreOrderResponse.class);
@@ -68,7 +69,7 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
 
     @Override
     public RefundPayScoreOrderResponse refundOrder(RefundPayScoreOrderDTO refundPayScoreOrderDTO) {
-        RefundPayScoreRequest request = converter.convert(refundPayScoreOrderDTO, RefundPayScoreRequest.class);
+        RefundPayScoreRequest request = converter.convert(refundPayScoreOrderDTO);
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getRefundOrderUrl(), request, RefundPayScoreOrderResponse.class);
     }

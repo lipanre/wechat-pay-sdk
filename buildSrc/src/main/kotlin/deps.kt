@@ -19,7 +19,7 @@ class Versions {
         /**
          * mapstruct-plus
          */
-        const val MAPSTRUCT_PLUS = "1.4.5"
+        const val MAPSTRUCT = "1.6.2"
 
         /**
          * spring
@@ -55,9 +55,8 @@ class Dependencies {
         /**
          * mapstruct-plus
          */
-        const val MAP_STRUCT_PLUS_PROCESSOR = "io.github.linpeilie:mapstruct-plus-processor:${Versions.MAPSTRUCT_PLUS}"
-        const val MAP_STRUCT_PLUS = "io.github.linpeilie:mapstruct-plus:${Versions.MAPSTRUCT_PLUS}"
-        const val MAP_STRUCT_PLUS_STATER = "io.github.linpeilie:mapstruct-plus-spring-boot-starter:${Versions.MAPSTRUCT_PLUS}"
+        const val MAP_STRUCT = "org.mapstruct:mapstruct:${Versions.MAPSTRUCT}"
+        const val MAP_STRUCT_PROCESSOR = "org.mapstruct:mapstruct-processor:${Versions.MAPSTRUCT}"
 
         /**
          * jackson
@@ -73,6 +72,12 @@ class Dependencies {
         const val SPRING_BOOT_STARTER_WEB = "org.springframework.boot:spring-boot-starter-web"
         const val SPRING_BOOT_CONFIGURATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
         const val SPRING_BOOT_AUTOCONFIGURE_PROCESSOR = "org.springframework.boot:spring-boot-autoconfigure-processor"
+
+        /**
+         * logback配置
+         */
+        const val LOG_BACK_CORE = "ch.qos.logback:logback-core"
+        const val LOG_BACK_CLASSIC = "ch.qos.logback:logback-classic"
     }
 }
 

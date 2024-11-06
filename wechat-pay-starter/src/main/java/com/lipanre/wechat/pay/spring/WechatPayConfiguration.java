@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.spring;
 
+import com.lipanre.wechat.pay.sdk.Converter;
 import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.WechatPayListener;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
@@ -21,13 +22,14 @@ import com.wechat.pay.contrib.apache.httpclient.exception.NotFoundException;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationHandler;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationRequest;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
-import io.github.linpeilie.Converter;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -41,6 +43,7 @@ import java.security.PrivateKey;
  * @author lipanre
  */
 @Configuration
+@ComponentScan(basePackages = {"com.lipanre.wechat.pay.sdk.dto", "com.lipanre.wechat.pay.sdk.model"})
 public class WechatPayConfiguration {
 
     /**
@@ -194,44 +197,38 @@ public class WechatPayConfiguration {
      * 支付分订单service
      *
      * @param payProperties 支付相关属性
-     * @param converter 类型转换器
      * @param httpService http-service
      * @return 支付分订单service
      */
     @Bean
     public PayScoreOrderService payScoreOrderService(PayProperties payProperties,
-                                                     Converter converter,
                                                      HttpService httpService) {
-        return new PayScoreOrderServiceImpl(payProperties, converter, httpService);
+        return new PayScoreOrderServiceImpl(payProperties, httpService);
     }
 
     /**
      * 支付分需确认订单serviceImpl
      *
      * @param payProperties 支付相关属性
-     * @param converter 类型转换器
      * @param httpService http-service
      * @return 支付分订单-需确认 service
      */
     @Bean
     public PayScoreConfirmOrderService payScoreConfirmOrderService(PayProperties payProperties,
-                                                                   Converter converter,
                                                                    HttpService httpService) {
-        return new PayScoreConfirmOrderServiceImpl(payProperties, converter, httpService);
+        return new PayScoreConfirmOrderServiceImpl(payProperties, httpService);
     }
 
     /**
      * 支付分无需确认订单serviceImpl
      *
      * @param payProperties 支付相关属性
-     * @param converter 类型转换器
      * @param httpService http-service
      * @return 支付分订单-无需确认 service
      */
     @Bean
     public PayScoreNoConfirmOrderService payScoreNoConfirmOrderService(PayProperties payProperties,
-                                                                       Converter converter,
                                                                        HttpService httpService) {
-        return new PayScoreNoConfirmOrderServiceImpl(payProperties, converter, httpService);
+        return new PayScoreNoConfirmOrderServiceImpl(payProperties, httpService);
     }
 }

@@ -1,9 +1,11 @@
 package com.lipanre.wechat.pay.sdk.dto;
 
+import com.lipanre.wechat.pay.sdk.Default;
 import com.lipanre.wechat.pay.sdk.model.Location;
 import com.lipanre.wechat.pay.sdk.model.PostDiscount;
 import com.lipanre.wechat.pay.sdk.model.PostPayment;
 import com.lipanre.wechat.pay.sdk.model.TimeRange;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +19,7 @@ import java.util.List;
  */
 @Data
 @AllArgsConstructor
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = @Default)
 public class CompletePayScoreOrderDTO {
 
     /**
