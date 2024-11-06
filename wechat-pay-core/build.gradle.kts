@@ -13,4 +13,6 @@ dependencies {
     implementation(Dependencies.JACKSON_CORE)
     implementation(Dependencies.JACKSON_DATABIND)
     implementation(Dependencies.JACKSON_DATATYPE_JSR310)
+    implementation(Dependencies.LOG_BACK_CORE)
+    implementation(Dependencies.LOG_BACK_CLASSIC)
 }

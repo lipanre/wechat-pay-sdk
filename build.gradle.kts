@@ -54,8 +54,8 @@ subprojects {
     configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
-        withJavadocJar()
-        withSourcesJar()
+//        withJavadocJar()
+//        withSourcesJar()
     }
 
 //    configure<PublishingExtension> {
@@ -133,8 +133,8 @@ subprojects {
     val annotationProcessor by configurations
     dependencies {
         implementation(platform(Dependencies.HUTOOL_BOM))
-        annotationProcessor(Dependencies.MAP_STRUCT_PLUS_PROCESSOR)
-        implementation(Dependencies.MAP_STRUCT_PLUS)
+        implementation(Dependencies.MAP_STRUCT)
+        annotationProcessor(Dependencies.MAP_STRUCT_PROCESSOR)
     }
 
 
