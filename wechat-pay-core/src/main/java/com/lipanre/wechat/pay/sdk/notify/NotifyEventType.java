@@ -2,6 +2,7 @@ package com.lipanre.wechat.pay.sdk.notify;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.lipanre.wechat.pay.sdk.WechatPayListener;
+import com.lipanre.wechat.pay.sdk.exception.NotSupportEventTypeException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -57,6 +58,6 @@ public enum NotifyEventType {
     @JsonCreator
     public static NotifyEventType getEventType(String code) {
         Optional<NotifyEventType> first = Arrays.stream(values()).filter(e -> e.code.equals(code)).findFirst();
-        return first.orElseThrow(() -> new RuntimeException("not support current callback event-type: " + code));
+        return first.orElseThrow(() -> new NotSupportEventTypeException("not support current callback event-type: " + code));
     }
 }
