@@ -42,7 +42,7 @@ public class WechatPayCallbackController {
                 .withBody(body)
                 .build();
         Notification notification = notificationHandler.parse(notificationRequest);
-        // 异步执行业务逻辑，直接返回给微信通知成功
+        // 异步执行业务逻辑，直接返回给微信通知成功, 防止微信等待超时
         CompletableFuture.runAsync(() -> handler.handle(notification));
         return NotifyResponse.success();
     }
