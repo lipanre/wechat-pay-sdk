@@ -41,6 +41,13 @@ allprojects {
         options.compilerArgs.add("-Xlint:-options")
         options.encoding="UTF-8"
     }
+
+
+    tasks.withType<Javadoc> {
+        options.encoding = "UTF-8"
+    }
+
+
 }
 
 subprojects {
@@ -55,7 +62,7 @@ subprojects {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
 //        withJavadocJar()
-//        withSourcesJar()
+        withSourcesJar()
     }
 
 //    configure<PublishingExtension> {
