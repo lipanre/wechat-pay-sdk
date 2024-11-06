@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.spring;
 
-import com.lipanre.wechat.pay.sdk.Converter;
 import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.WechatPayListener;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
@@ -27,9 +26,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -43,7 +40,6 @@ import java.security.PrivateKey;
  * @author lipanre
  */
 @Configuration
-@ComponentScan(basePackages = {"com.lipanre.wechat.pay.sdk.dto", "com.lipanre.wechat.pay.sdk.model"})
 public class WechatPayConfiguration {
 
     /**
