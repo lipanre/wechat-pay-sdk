@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk;
 
+import com.lipanre.wechat.pay.sdk.exception.WechatPayException;
 import com.lipanre.wechat.pay.sdk.util.JsonUtil;
 import com.lipanre.wechat.pay.sdk.util.StrUtil;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,16 @@ public class HttpService {
      * 通用的请求头map
      */
     private static final Map<String, String> COMMON_HEADERS = new HashMap<>();
+
+    /**
+     * 请求成功响应码
+     */
+    private static final int SUCCESS = 200;
+
+    /**
+     * 请求成功-无响应响应码
+     */
+    private static final int SUCCESS_NO_REPLY = 204;
 
     static {
         // 初始化通用的header缓存
@@ -91,6 +102,16 @@ public class HttpService {
     private <T> T request(Class<T> clazz, HttpRequestBase httpRequest) throws IOException {
         setHeaders(httpRequest);
         HttpResponse response = httpClient.execute(httpRequest);
+
+        // 判断是否请求异常
+        int statusCode = response.getStatusLine().getStatusCode();
+        if (statusCode != SUCCESS && statusCode != SUCCESS_NO_REPLY) {
+            throw new WechatPayException("微信支付接口请求异常 响应码: " + statusCode);
+        }
+        // 如果无响应，则返回空
+        if (statusCode == SUCCESS_NO_REPLY) {
+            return null;
+        }
         String json = EntityUtils.toString(response.getEntity());
         log.info("微信支付相关请求响应内容: {}", json);
         return JsonUtil.fromJson(json, clazz);
