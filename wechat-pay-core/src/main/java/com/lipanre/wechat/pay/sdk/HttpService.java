@@ -106,14 +106,14 @@ public class HttpService {
         // 判断是否请求异常
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode != SUCCESS && statusCode != SUCCESS_NO_REPLY) {
-            throw new WechatPayException("微信支付接口请求异常 响应码: " + statusCode);
+            throw new WechatPayException("微信支付接口请求异常 响应码: " + EntityUtils.toString(response.getEntity()));
         }
         // 如果无响应，则返回空
         if (statusCode == SUCCESS_NO_REPLY) {
             return null;
         }
         String json = EntityUtils.toString(response.getEntity());
-        log.info("微信支付相关请求响应内容: {}", json);
+        log.info("wechat pay api request response : {}", json);
         return JsonUtil.fromJson(json, clazz);
     }
 
