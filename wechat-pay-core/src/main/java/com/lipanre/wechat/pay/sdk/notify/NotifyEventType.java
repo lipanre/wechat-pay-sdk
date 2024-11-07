@@ -39,6 +39,31 @@ public enum NotifyEventType {
     REFUND_CLOSED("REFUND.CLOSED", RefundInfo.class,
             (listener, data) -> listener.onRefundClose((RefundInfo) data)),
 
+
+    /**
+     * 授权成功通知
+     */
+    PAYSCORE_USER_OPEN_SERVICE("PAYSCORE.USER_OPEN_SERVICE", PaymentInfo.class,
+            (listener, data) -> listener.onUserOpenService((PaymentInfo) data)),
+
+    /**
+     * 解除授权成功通知
+     */
+    PAYSCORE_USER_CLOSE_SERVICE("PAYSCORE.USER_CLOSE_SERVICE", PaymentInfo.class,
+            (listener, data) -> listener.onUserCloseService((PaymentInfo) data)),
+
+    /**
+     * 用户确认成功通知
+     */
+    PAYSCORE_USER_CONFIRM("PAYSCORE.USER_CONFIRM", PaymentInfo.class,
+            (listener, data) -> listener.onUserConfirm((PaymentInfo) data)),
+
+    /**
+     * 支付成功通知
+     */
+    PAYSCORE_USER_PAID("PAYSCORE.USER_PAID", PaymentInfo.class,
+            (listener, data) -> listener.onUserPaid((PaymentInfo) data))
+
     ;
 
     private final String code;
@@ -49,9 +74,9 @@ public enum NotifyEventType {
     private final Class<? extends CallbackInfo> clazz;
 
     /**
-     * 数据处理函数
+     * 数据处理策略
      */
-    private final BiConsumer<WechatPayListener, CallbackInfo> consumer;
+    private final BiConsumer<WechatPayListener, CallbackInfo> strategy;
 
 
 

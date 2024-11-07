@@ -32,6 +32,6 @@ public class WechatPayCallbackHandler {
         String json = request.getDecryptData();
         T callbackInfo = (T) JsonUtil.fromJson(json, eventType.getClazz());
         // 调用监听器
-        eventType.getConsumer().accept(wechatPayListener, callbackInfo);
+        eventType.getStrategy().accept(wechatPayListener, callbackInfo);
     }
 }
