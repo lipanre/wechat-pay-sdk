@@ -106,7 +106,7 @@ public class HttpService {
         // 判断是否请求异常
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode != SUCCESS && statusCode != SUCCESS_NO_REPLY) {
-            throw new WechatPayException("微信支付接口请求异常 响应码: " + EntityUtils.toString(response.getEntity()));
+            throw new WechatPayException("微信支付接口请求异常: " + EntityUtils.toString(response.getEntity()));
         }
         // 如果无响应，则返回空
         if (statusCode == SUCCESS_NO_REPLY) {
