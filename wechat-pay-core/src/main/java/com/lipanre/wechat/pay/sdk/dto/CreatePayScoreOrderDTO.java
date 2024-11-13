@@ -77,7 +77,7 @@ public class CreatePayScoreOrderDTO {
         this.timeRange = timeRange;
         this.riskFund = riskFund;
         this.openId = openId;
-        this.needUserConfirm = false;
+        this.needUserConfirm = true;
     }
 
     public CreatePayScoreOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, List<PostPayment> postPayments, List<PostDiscount> postDiscounts, Location location, String attach, String notifyUrl) {
@@ -103,6 +103,6 @@ public class CreatePayScoreOrderDTO {
         this.attach = attach;
         this.notifyUrl = notifyUrl;
         this.openId = openId;
-        this.needUserConfirm = false;
+        this.needUserConfirm = true;
     }
 }
