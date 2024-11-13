@@ -9,6 +9,7 @@ import com.lipanre.wechat.pay.sdk.model.request.CompletePayScoreOrderRequest;
 import com.lipanre.wechat.pay.sdk.model.request.CreatePayScoreOrderRequest;
 import com.lipanre.wechat.pay.sdk.model.request.RefundPayScoreRequest;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 /**
@@ -27,6 +28,7 @@ public interface Converter {
      * @param createPayScoreOrderDTO dto
      * @return request
      */
+    @Mapping(source = "openId", target = "openid")
     CreatePayScoreOrderRequest convert(CreatePayScoreOrderDTO createPayScoreOrderDTO);
 
     /**
