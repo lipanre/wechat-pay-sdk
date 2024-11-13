@@ -35,8 +35,10 @@ public class WechatPayCallbackController {
     public NotifyResponse callback(@RequestHeader("Wechatpay-Nonce") String nonce,
                                    @RequestHeader("Wechatpay-Timestamp") String timestamp,
                                    @RequestHeader("Wechatpay-Signature") String signature,
+                                   @RequestHeader("Wechatpay-Serial") String serialNumber,
                                    @RequestBody String body) throws ValidationException, ParseException {
-        NotificationRequest notificationRequest = notificationRequestBuilder.withNonce(nonce)
+        NotificationRequest notificationRequest = notificationRequestBuilder.withSerialNumber(serialNumber)
+                .withNonce(nonce)
                 .withTimestamp(timestamp)
                 .withSignature(signature)
                 .withBody(body)
