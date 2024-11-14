@@ -79,7 +79,17 @@ public class HttpService {
         HttpGet get = new HttpGet(url);
         if (Objects.nonNull(params)) {
             URIBuilder uriBuilder = new URIBuilder(url);
-            for (Field field : params.getClass().getDeclaredFields()) {
+            buildUrlParams(params, uriBuilder);
+            get.setURI(uriBuilder.build());
+        }
+        return request(clazz, get);
+    }
+
+    @SneakyThrows
+    private void buildUrlParams(Object params, URIBuilder uriBuilder) {
+        Class<?> dataClass = params.getClass();
+        while (Objects.nonNull(dataClass)) {
+            for (Field field : dataClass.getDeclaredFields()) {
                 field.setAccessible(true);
                 // 名称要转为下划线
                 String underLineName = StrUtil.toUnderLine(field.getName());
@@ -87,9 +97,8 @@ public class HttpService {
                     uriBuilder.addParameter(underLineName, field.get(params).toString());
                 }
             }
-            get.setURI(uriBuilder.build());
+            dataClass = dataClass.getSuperclass();
         }
-        return request(clazz, get);
     }
 
     /**
