@@ -4,10 +4,7 @@ import com.lipanre.wechat.pay.sdk.dto.CancelPayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.dto.CompletePayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.dto.CreatePayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.dto.RefundPayScoreOrderDTO;
-import com.lipanre.wechat.pay.sdk.model.response.CancelPayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.CompletePayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.CreatePayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.RefundPayScoreOrderResponse;
+import com.lipanre.wechat.pay.sdk.model.response.*;
 
 /**
  * 订单相关service
@@ -48,5 +45,13 @@ public interface PayScoreOrderService {
      * @return 退款支付分响应
      */
     RefundPayScoreOrderResponse refundOrder(RefundPayScoreOrderDTO refundPayScoreOrderDTO);
+
+    /**
+     * 查询订单信息
+     *
+     * @param outOrderNo 订单编号
+     * @return 查询订单响应
+     */
+    SearchPayScoreOrderResponse searchOrder(String outOrderNo);
 
 }

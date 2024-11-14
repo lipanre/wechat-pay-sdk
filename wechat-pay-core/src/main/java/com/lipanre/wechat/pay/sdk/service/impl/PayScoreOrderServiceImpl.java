@@ -8,14 +8,8 @@ import com.lipanre.wechat.pay.sdk.dto.CompletePayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.dto.CreatePayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.dto.RefundPayScoreOrderDTO;
 import com.lipanre.wechat.pay.sdk.factory.PayScoreOrderUrlFactory;
-import com.lipanre.wechat.pay.sdk.model.request.CancelPayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.CompletePayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.CreatePayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.RefundPayScoreRequest;
-import com.lipanre.wechat.pay.sdk.model.response.CancelPayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.CompletePayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.CreatePayScoreOrderResponse;
-import com.lipanre.wechat.pay.sdk.model.response.RefundPayScoreOrderResponse;
+import com.lipanre.wechat.pay.sdk.model.request.*;
+import com.lipanre.wechat.pay.sdk.model.response.*;
 import com.lipanre.wechat.pay.sdk.service.PayScoreOrderService;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
@@ -72,5 +66,13 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
         RefundPayScoreRequest request = converter.convert(refundPayScoreOrderDTO);
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getRefundOrderUrl(), request, RefundPayScoreOrderResponse.class);
+    }
+
+    @Override
+    public SearchPayScoreOrderResponse searchOrder(String outOrderNo) {
+        SearchPayScoreOrderRequest request = new SearchPayScoreOrderRequest();
+        request.apply(payProperties.getAppid(), payProperties.getServiceId());
+        request.setOutOrderNo(outOrderNo);
+        return httpService.post(PayScoreOrderUrlFactory.getSearchOrderUrl(), request, SearchPayScoreOrderResponse.class);
     }
 }
