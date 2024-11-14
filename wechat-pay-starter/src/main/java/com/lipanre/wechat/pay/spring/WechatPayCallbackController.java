@@ -8,12 +8,15 @@ import com.wechat.pay.contrib.apache.httpclient.notification.Notification;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationHandler;
 import com.wechat.pay.contrib.apache.httpclient.notification.NotificationRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * 微信支付回调controller
@@ -32,7 +35,7 @@ public class WechatPayCallbackController {
 
 
     @PostMapping(Constant.PAY_SCORE_CALLBACK_URL)
-    public NotifyResponse callback(@RequestHeader("Wechatpay-Nonce") String nonce,
+    public ResponseEntity<NotifyResponse> callback(@RequestHeader("Wechatpay-Nonce") String nonce,
                                    @RequestHeader("Wechatpay-Timestamp") String timestamp,
                                    @RequestHeader("Wechatpay-Signature") String signature,
                                    @RequestHeader("Wechatpay-Serial") String serialNumber,
@@ -45,7 +48,11 @@ public class WechatPayCallbackController {
                 .build();
         Notification notification = notificationHandler.parse(notificationRequest);
         // 异步执行业务逻辑，直接返回给微信通知成功, 防止微信等待超时
-        CompletableFuture.runAsync(() -> handler.handle(notification));
-        return NotifyResponse.success();
+        return CompletableFuture.runAsync(() -> handler.handle(notification)).handle((result, exception) -> {
+            if (Objects.nonNull(exception)) {
+                return ResponseEntity.badRequest().body(NotifyResponse.fail("失败"));
+            }
+            return ResponseEntity.ok().body(NotifyResponse.success());
+        }).get();
     }
 }
