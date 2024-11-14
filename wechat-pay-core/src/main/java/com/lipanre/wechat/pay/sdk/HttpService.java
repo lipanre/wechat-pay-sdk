@@ -83,7 +83,9 @@ public class HttpService {
                 field.setAccessible(true);
                 // 名称要转为下划线
                 String underLineName = StrUtil.toUnderLine(field.getName());
-                uriBuilder.addParameter(underLineName, field.get(params).toString());
+                if (Objects.nonNull(field.get(params))) {
+                    uriBuilder.addParameter(underLineName, field.get(params).toString());
+                }
             }
             get.setURI(uriBuilder.build());
         }
