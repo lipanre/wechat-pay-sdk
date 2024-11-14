@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lipanre.wechat.pay.sdk.common.Constant;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public class RefundOrderDetailModel extends RefundOrderModel {
     /**
      * 微信支付退款单号

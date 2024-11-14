@@ -5,6 +5,7 @@ import com.lipanre.wechat.pay.sdk.model.RefundOrderModel;
 import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public class RefundPayScoreRequest extends RefundOrderModel {
 
     /**

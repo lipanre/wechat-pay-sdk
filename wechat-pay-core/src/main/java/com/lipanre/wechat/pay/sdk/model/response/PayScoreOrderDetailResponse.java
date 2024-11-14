@@ -5,12 +5,14 @@ import com.lipanre.wechat.pay.sdk.enums.OrderStateDescription;
 import com.lipanre.wechat.pay.sdk.model.OrderDetailModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * @author lipanre
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public abstract class PayScoreOrderDetailResponse extends OrderDetailModel {
     /**
      * 商户号

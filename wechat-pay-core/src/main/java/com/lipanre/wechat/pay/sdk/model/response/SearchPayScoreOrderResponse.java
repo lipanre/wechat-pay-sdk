@@ -3,6 +3,7 @@ package com.lipanre.wechat.pay.sdk.model.response;
 import com.lipanre.wechat.pay.sdk.model.Collection;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * 查询订单响应
@@ -11,6 +12,7 @@ import lombok.EqualsAndHashCode;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public class SearchPayScoreOrderResponse extends PayScoreOrderDetailResponse {
 
 

@@ -9,6 +9,7 @@ import com.lipanre.wechat.pay.sdk.model.RefundOrderDetailModel;
 import com.lipanre.wechat.pay.sdk.model.RefundPromotionInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public class RefundPayScoreOrderResponse extends RefundOrderDetailModel {
 
     /**

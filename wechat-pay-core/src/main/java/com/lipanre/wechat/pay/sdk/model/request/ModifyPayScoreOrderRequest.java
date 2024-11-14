@@ -5,6 +5,7 @@ import com.lipanre.wechat.pay.sdk.model.PostDiscount;
 import com.lipanre.wechat.pay.sdk.model.PostPayment;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 public class ModifyPayScoreOrderRequest extends OrderModel {
 
     /**
