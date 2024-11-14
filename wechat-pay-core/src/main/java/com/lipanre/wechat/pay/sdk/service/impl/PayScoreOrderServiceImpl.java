@@ -73,6 +73,6 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
         SearchPayScoreOrderRequest request = new SearchPayScoreOrderRequest();
         request.apply(payProperties.getAppid(), payProperties.getServiceId());
         request.setOutOrderNo(outOrderNo);
-        return httpService.post(PayScoreOrderUrlFactory.getSearchOrderUrl(), request, SearchPayScoreOrderResponse.class);
+        return httpService.get(PayScoreOrderUrlFactory.getSearchOrderUrl(), request, SearchPayScoreOrderResponse.class);
     }
 }
