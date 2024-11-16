@@ -71,6 +71,7 @@ public class HttpService {
     public <T> T post(String url, Object body, Class<T> clazz) {
         HttpPost post = new HttpPost(url);
         post.setEntity(getEntity(body));
+        log.info("wechat pay request: url = {}, body = {}", url, EntityUtils.toString(post.getEntity()));
         return request(clazz, post);
     }
 
@@ -82,6 +83,7 @@ public class HttpService {
             buildUrlParams(params, uriBuilder);
             get.setURI(uriBuilder.build());
         }
+        log.info("wechat pay request: url = {}", url);
         return request(clazz, get);
     }
 
