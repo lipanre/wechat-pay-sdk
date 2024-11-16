@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/lipanre/picBad/master/202411162040473.png" style="zoom:20%;" />
+<img src="https://raw.githubusercontent.com/lipanre/picBad/master/202411162040473.png" style="width:80px; align: center" />
 
 # wechat-pay-sdk
 
