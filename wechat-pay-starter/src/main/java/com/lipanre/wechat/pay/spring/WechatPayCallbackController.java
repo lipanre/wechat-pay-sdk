@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * 微信支付回调controller
@@ -44,6 +42,7 @@ public class WechatPayCallbackController {
                                    @RequestHeader("Wechatpay-Signature") String signature,
                                    @RequestHeader("Wechatpay-Serial") String serialNumber,
                                    @RequestBody String body) throws ValidationException, ParseException {
+        log.info("接收到微信回调: {}", body);
         NotificationRequest notificationRequest = notificationRequestBuilder.withSerialNumber(serialNumber)
                 .withNonce(nonce)
                 .withTimestamp(timestamp)
@@ -55,6 +54,7 @@ public class WechatPayCallbackController {
             // 异步执行业务逻辑，直接返回给微信通知成功, 防止微信等待超时
             return CompletableFuture.runAsync(() -> handler.handle(notification)).handle((result, exception) -> {
                 if (Objects.nonNull(exception)) {
+                    log.error("微信回调处理异常: ", exception);
                     return ResponseEntity.badRequest().body(NotifyResponse.fail("失败"));
                 }
                 return ResponseEntity.ok().body(NotifyResponse.success());
