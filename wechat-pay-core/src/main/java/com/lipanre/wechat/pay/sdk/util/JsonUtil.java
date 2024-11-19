@@ -33,6 +33,8 @@ public class JsonUtil {
 
         // 反序列化如果字段不存在不报错
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        // 如果枚举值不存在，则返回null
+        objectMapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_AS_NULL);
     }
 
     /**
