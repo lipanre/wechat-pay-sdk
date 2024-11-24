@@ -13,6 +13,11 @@ public class Constant {
     public static final String API_DATE_PATTERN = "yyyyMMddHHmmss";
 
     /**
+     * 有时区信息的时间格式
+     */
+    public static final String API_DATE_TIMEZONE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";
+
+    /**
      * 支付分回调url
      */
     public static final String PAY_SCORE_CALLBACK_URL = "/pay-score/callback";

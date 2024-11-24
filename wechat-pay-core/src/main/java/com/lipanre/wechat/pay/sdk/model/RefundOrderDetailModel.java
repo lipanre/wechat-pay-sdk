@@ -34,7 +34,7 @@ public class RefundOrderDetailModel extends RefundOrderModel {
     /**
      * 退款成功时间
      */
-    @JsonFormat(pattern = Constant.API_DATE_PATTERN)
+    @JsonFormat(pattern = Constant.API_DATE_TIMEZONE_PATTERN)
     private LocalDateTime successTime;
     /**
      * 金额信息
