@@ -1,8 +1,9 @@
 package com.lipanre.wechat.pay.sdk.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.Currency;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * {@code description}
@@ -23,7 +24,7 @@ public class Amount {
     /**
      * 退款出资账户及金额
      */
-    private RefundsOrderInfo from;
+    private List<RefundsOrderInfo> from;
 
     /**
      * 原订单金额
