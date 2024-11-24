@@ -35,7 +35,7 @@ public class RefundPayScoreOrderResponse extends RefundOrderDetailModel {
     /**
      * 退款创建时间
      */
-    @JsonFormat(pattern = Constant.API_DATE_PATTERN)
+    @JsonFormat(pattern = Constant.API_DATE_TIMEZONE_PATTERN)
     private LocalDateTime createTime;
 
     /**
