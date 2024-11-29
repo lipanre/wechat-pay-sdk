@@ -2,6 +2,8 @@ package com.lipanre.wechat.pay.sdk.service.impl;
 
 import com.lipanre.wechat.pay.sdk.Converter;
 import com.lipanre.wechat.pay.sdk.HttpService;
+import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
+import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderDTO;
 import com.lipanre.wechat.pay.sdk.factory.AppletUrlFactory;
 import com.lipanre.wechat.pay.sdk.model.request.AppletCreateOrderRequest;
@@ -25,13 +27,25 @@ public class AppletOrderServiceImpl implements AppletOrderService {
      */
     private final Converter converter = Mappers.getMapper(Converter.class);
 
+    /**
+     * 微信支付相关配置
+     */
+    private final MerchantProperties merchantProperties;
 
+    /**
+     * 支付相关属性
+     */
+    private final PayProperties payProperties;
+
+    /**
+     * http-service
+     */
     private final HttpService httpService;
 
 
     @Override
     public AppletCreateOrderResponse createOrder(AppletCreateOrderDTO appletCreateOrderDTO) {
-        AppletCreateOrderRequest appletCreateOrderRequest = converter.convert(appletCreateOrderDTO);
+        AppletCreateOrderRequest appletCreateOrderRequest = converter.convert(appletCreateOrderDTO, merchantProperties, payProperties);
         return httpService.post(AppletUrlFactory.getCreateOrderUrl(), appletCreateOrderRequest, AppletCreateOrderResponse.class);
     }
 }

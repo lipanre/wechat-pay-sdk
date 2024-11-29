@@ -41,7 +41,7 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
     @Override
     public CreatePayScoreOrderResponse createOrder(CreatePayScoreOrderDTO createPayScoreOrderDTO) {
         CreatePayScoreOrderRequest request = converter.convert(createPayScoreOrderDTO);
-        request.apply(payProperties.getAppid(), payProperties.getServiceId());
+        request.apply(payProperties.getAppId(), payProperties.getServiceId());
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getCreateOrderUrl(), request, CreatePayScoreOrderResponse.class);
     }
@@ -49,14 +49,14 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
     @Override
     public CancelPayScoreOrderResponse cancelOrder(String outOrderNo, CancelPayScoreOrderDTO cancelPayScoreOrderDTO) {
         CancelPayScoreOrderRequest request = converter.convert(cancelPayScoreOrderDTO);
-        request.apply(payProperties.getAppid(), payProperties.getServiceId());
+        request.apply(payProperties.getAppId(), payProperties.getServiceId());
         return httpService.post(PayScoreOrderUrlFactory.getCancelOrderUrl(outOrderNo), request, CancelPayScoreOrderResponse.class);
     }
 
     @Override
     public CompletePayScoreOrderResponse completeOrder(String outOrderNo, CompletePayScoreOrderDTO completePayScoreOrderDTO) {
         CompletePayScoreOrderRequest request = converter.convert(completePayScoreOrderDTO);
-        request.apply(payProperties.getAppid(), payProperties.getServiceId());
+        request.apply(payProperties.getAppId(), payProperties.getServiceId());
         request.setNotifyUrl(payProperties.getCallbackUrl());
         return httpService.post(PayScoreOrderUrlFactory.getCompleteOrderUrl(outOrderNo), request, CompletePayScoreOrderResponse.class);
     }
@@ -71,7 +71,7 @@ public class PayScoreOrderServiceImpl implements PayScoreOrderService {
     @Override
     public SearchPayScoreOrderResponse searchOrder(String outOrderNo) {
         SearchPayScoreOrderRequest request = new SearchPayScoreOrderRequest();
-        request.apply(payProperties.getAppid(), payProperties.getServiceId());
+        request.apply(payProperties.getAppId(), payProperties.getServiceId());
         request.setOutOrderNo(outOrderNo);
         return httpService.get(PayScoreOrderUrlFactory.getSearchOrderUrl(), request, SearchPayScoreOrderResponse.class);
     }

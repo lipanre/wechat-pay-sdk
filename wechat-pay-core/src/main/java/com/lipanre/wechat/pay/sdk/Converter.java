@@ -1,5 +1,7 @@
 package com.lipanre.wechat.pay.sdk;
 
+import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
+import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.*;
 import com.lipanre.wechat.pay.sdk.model.request.*;
 import org.mapstruct.Mapper;
@@ -53,8 +55,15 @@ public interface Converter {
      * 小程序创建订单请求dto转request
      *
      * @param appletCreateOrderDTO 小程序创建订单dto
+     * @param merchantProperties 商户相关配置
+     * @param payProperties 支付相关配置
      * @return 小程序创建订单请求对象
      */
-    @Mapping(target = "payer.openid", source = "openId")
-    AppletCreateOrderRequest convert(AppletCreateOrderDTO appletCreateOrderDTO);
+    @Mapping(target = "payer.openid", source = "appletCreateOrderDTO.openId")
+    @Mapping(target = "appId", source = "payProperties.appId")
+    @Mapping(target = "mchId", source = "merchantProperties.merchantId")
+    @Mapping(target = "notifyUrl", expression = """
+            java(payProperties.getCallbackUrl())
+            """)
+    AppletCreateOrderRequest convert(AppletCreateOrderDTO appletCreateOrderDTO, MerchantProperties merchantProperties, PayProperties payProperties);
 }

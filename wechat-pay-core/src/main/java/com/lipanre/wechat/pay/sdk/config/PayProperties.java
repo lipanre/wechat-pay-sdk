@@ -34,7 +34,7 @@ public class PayProperties {
      * <br>
      * 获取方式：<a href="https://developers.weixin.qq.com/community/develop/article/doc/0002ea97958958f87389d9a2b5fc13">获取APPID</a>
      */
-    private String appid;
+    private String appId;
 
     /**
      * 获取回调url
