@@ -4,9 +4,11 @@ import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.WechatPayListener;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
+import com.lipanre.wechat.pay.sdk.service.AppletOrderService;
 import com.lipanre.wechat.pay.sdk.service.PayScoreConfirmOrderService;
 import com.lipanre.wechat.pay.sdk.service.PayScoreNoConfirmOrderService;
 import com.lipanre.wechat.pay.sdk.service.PayScoreOrderService;
+import com.lipanre.wechat.pay.sdk.service.impl.AppletOrderServiceImpl;
 import com.lipanre.wechat.pay.sdk.service.impl.PayScoreConfirmOrderServiceImpl;
 import com.lipanre.wechat.pay.sdk.service.impl.PayScoreNoConfirmOrderServiceImpl;
 import com.lipanre.wechat.pay.sdk.service.impl.PayScoreOrderServiceImpl;
@@ -226,5 +228,12 @@ public class WechatPayConfiguration {
     public PayScoreNoConfirmOrderService payScoreNoConfirmOrderService(PayProperties payProperties,
                                                                        HttpService httpService) {
         return new PayScoreNoConfirmOrderServiceImpl(payProperties, httpService);
+    }
+
+    @Bean
+    public AppletOrderService appletOrderService(MerchantProperties merchantProperties,
+                                                 PayProperties payProperties,
+                                                 HttpService httpService) {
+        return new AppletOrderServiceImpl(merchantProperties, payProperties, httpService);
     }
 }
