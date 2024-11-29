@@ -44,6 +44,6 @@ public class RefundPromotionInfo {
     /**
      * 商品列表
      */
-    private List<RefundsGoodsDetail> goodsDetail;
+    private List<OrderGoodsDetail> goodsDetail;
 
 }

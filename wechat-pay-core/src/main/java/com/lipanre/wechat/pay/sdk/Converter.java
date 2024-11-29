@@ -1,13 +1,7 @@
 package com.lipanre.wechat.pay.sdk;
 
-import com.lipanre.wechat.pay.sdk.dto.CancelPayScoreOrderDTO;
-import com.lipanre.wechat.pay.sdk.dto.CompletePayScoreOrderDTO;
-import com.lipanre.wechat.pay.sdk.dto.CreatePayScoreOrderDTO;
-import com.lipanre.wechat.pay.sdk.dto.RefundPayScoreOrderDTO;
-import com.lipanre.wechat.pay.sdk.model.request.CancelPayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.CompletePayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.CreatePayScoreOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.request.RefundPayScoreRequest;
+import com.lipanre.wechat.pay.sdk.dto.*;
+import com.lipanre.wechat.pay.sdk.model.request.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -54,4 +48,13 @@ public interface Converter {
      * @return request
      */
     RefundPayScoreRequest convert(RefundPayScoreOrderDTO refundPayScoreOrderDTO);
+
+    /**
+     * 小程序创建订单请求dto转request
+     *
+     * @param appletCreateOrderDTO 小程序创建订单dto
+     * @return 小程序创建订单请求对象
+     */
+    @Mapping(target = "payer.openid", source = "openId")
+    AppletCreateOrderRequest convert(AppletCreateOrderDTO appletCreateOrderDTO);
 }

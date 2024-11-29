@@ -10,7 +10,7 @@ import lombok.Data;
  * {@code date} 2024/11/1 10:50
  */
 @Data
-public class RefundsGoodsDetail {
+public class OrderGoodsDetail {
 
     /**
      * 商户侧商品编码
@@ -41,5 +41,10 @@ public class RefundsGoodsDetail {
      * 商品退货数量
      */
     private Integer refundQuantity;
+
+    /**
+     * 【商品数量】 用户购买的数量
+     */
+    private Integer quantity;
 
 }

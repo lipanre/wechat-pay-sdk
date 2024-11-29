@@ -2,7 +2,7 @@ package com.lipanre.wechat.pay.sdk.model.request;
 
 import com.lipanre.wechat.pay.sdk.enums.FundsAccount;
 import com.lipanre.wechat.pay.sdk.model.RefundOrderModel;
-import com.lipanre.wechat.pay.sdk.model.RefundsGoodsDetail;
+import com.lipanre.wechat.pay.sdk.model.OrderGoodsDetail;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -39,6 +39,6 @@ public class RefundPayScoreRequest extends RefundOrderModel {
     /**
      * 退款商品
      */
-    private List<RefundsGoodsDetail> goodsDetail;
+    private List<OrderGoodsDetail> goodsDetail;
 
 }

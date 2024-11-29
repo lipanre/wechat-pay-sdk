@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.model.OrderModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -20,7 +21,8 @@ public class CancelPayScoreOrderResponse extends OrderModel {
     /**
      * 商户号
      */
-    private String mchid;
+    @JsonProperty("mchid")
+    private String mchId;
 
     /**
      * 微信支付服务订单号

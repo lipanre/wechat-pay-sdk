@@ -26,7 +26,7 @@ public class StrUtil {
      */
     public static String toUnderLine(String str) {
         matcher.reset(str);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         while (matcher.find()) {
             matcher.appendReplacement(sb, REPLACEMENT_REGEXP);
         }

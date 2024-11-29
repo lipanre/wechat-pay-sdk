@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.notify;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.enums.RefundState;
 import com.lipanre.wechat.pay.sdk.model.RefundOrderDetailModel;
 import lombok.Data;
@@ -19,7 +20,8 @@ public class RefundInfo extends RefundOrderDetailModel implements CallbackInfo{
     /**
      * 直连商户号
      */
-    private String mchid;
+    @JsonProperty("mchid")
+    private String mchId;
 
     /**
      * 退款状态
