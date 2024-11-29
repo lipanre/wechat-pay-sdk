@@ -62,8 +62,10 @@ public enum NotifyEventType {
      * 支付成功通知
      */
     PAYSCORE_USER_PAID("PAYSCORE.USER_PAID", PayScorePaymentInfo.class,
-            (listener, data) -> listener.onUserPaid((PayScorePaymentInfo) data))
+            (listener, data) -> listener.onUserPaid((PayScorePaymentInfo) data)),
 
+    TRANSACTION_SUCCESS("TRANSACTION.SUCCESS", AppletPayment.class,
+            (listener, data) -> listener.onAppletPaid((AppletPayment) data)),
     ;
 
     private final String code;

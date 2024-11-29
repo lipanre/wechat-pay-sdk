@@ -3,18 +3,14 @@ package com.lipanre.wechat.pay.sdk.model.request;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.lipanre.wechat.pay.sdk.common.Constant;
-import com.lipanre.wechat.pay.sdk.enums.Currency;
 import com.lipanre.wechat.pay.sdk.model.AppletOrderAmount;
 import com.lipanre.wechat.pay.sdk.model.OrderGoodsDetail;
+import com.lipanre.wechat.pay.sdk.model.Payer;
+import com.lipanre.wechat.pay.sdk.model.SceneInfo;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -106,64 +102,6 @@ public class AppletCreateOrderRequest {
      */
     private SettleInfo settleInfo;
 
-
-    @Data
-    public static class SceneInfo {
-
-        /**
-         * 【用户终端IP】 用户的客户端IP，支持IPv4和IPv6两种格式的IP地址。
-         */
-        private String payerClientIp;
-
-        /**
-         * 【商户端设备号】 商户端设备号（门店号或收银设备ID）。
-         */
-        private String deviceId;
-
-        /**
-         * 【商户门店信息】 商户门店信息
-         */
-        private StoreInfo storeInfo;
-
-        @Data
-        public static class StoreInfo {
-
-            /**
-             * 【门店编号】 商户侧门店编号
-             */
-            private String id;
-
-            /**
-             * 【门店名称】 商户侧门店名称
-             */
-            private String name;
-
-            /**
-             * 【地区编码】 地区编码，详细请见省市区编号对照表。
-             */
-            private String areaCode;
-
-            /**
-             * 【详细地址】 详细的商户门店地址
-             */
-            private String address;
-
-        }
-    }
-
-
-
-    /**
-     * 支付者
-     */
-    @Data
-    public static class Payer {
-
-        /**
-         * 【用户标识】 用户在普通商户AppID下的唯一标识。 下单前需获取到用户的OpenID
-         */
-        private String openid;
-    }
 
     /**
      * 【优惠功能】 优惠功能

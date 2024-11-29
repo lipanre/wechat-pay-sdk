@@ -37,6 +37,11 @@ public class Amount {
     private Currency currency;
 
     /**
+     * 用户支付币种
+     */
+    private Currency payerCurrency;
+
+    /**
      * 用户支付金额
      */
     private Long payerTotal;

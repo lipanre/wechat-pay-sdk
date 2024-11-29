@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk;
 
+import com.lipanre.wechat.pay.sdk.notify.AppletPayment;
 import com.lipanre.wechat.pay.sdk.notify.PayScorePaymentInfo;
 import com.lipanre.wechat.pay.sdk.notify.PayScoreRefundInfo;
 
@@ -60,4 +61,11 @@ public interface WechatPayListener {
      * @param paymentInfo 支付信息
      */
     void onUserPaid(PayScorePaymentInfo paymentInfo);
+
+    /**
+     * 当小程序支付成功时回调
+     *
+     * @param appletPayment 小程序支付信息
+     */
+    void onAppletPaid(AppletPayment appletPayment);
 }
