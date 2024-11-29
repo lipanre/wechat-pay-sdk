@@ -1,8 +1,7 @@
 package com.lipanre.wechat.pay.sdk;
 
-import com.lipanre.wechat.pay.sdk.notify.CallbackInfo;
-import com.lipanre.wechat.pay.sdk.notify.PaymentInfo;
-import com.lipanre.wechat.pay.sdk.notify.RefundInfo;
+import com.lipanre.wechat.pay.sdk.notify.PayScorePaymentInfo;
+import com.lipanre.wechat.pay.sdk.notify.PayScoreRefundInfo;
 
 /**
  * {@code description}
@@ -18,47 +17,47 @@ public interface WechatPayListener {
      *
      * @param refundInfo 退款信息
      */
-    void onRefundSuccess(RefundInfo refundInfo);
+    void onRefundSuccess(PayScoreRefundInfo refundInfo);
 
     /**
      * 退款异常回调
      *
      * @param refundInfo 退款信息
      */
-    void onRefundAbnormal(RefundInfo refundInfo);
+    void onRefundAbnormal(PayScoreRefundInfo refundInfo);
 
     /**
      * 退款关闭回调
      *
      * @param refundInfo 退款信息
      */
-    void onRefundClose(RefundInfo refundInfo);
+    void onRefundClose(PayScoreRefundInfo refundInfo);
 
     /**
      * 用户授权成功时回调
      *
      * @param paymentInfo 支付回调信息
      */
-    void onUserOpenService(PaymentInfo paymentInfo);
+    void onUserOpenService(PayScorePaymentInfo paymentInfo);
 
     /**
      * 用户关闭授权时回调
      *
      * @param paymentInfo 支付信息
      */
-    void onUserCloseService(PaymentInfo paymentInfo);
+    void onUserCloseService(PayScorePaymentInfo paymentInfo);
 
     /**
      * 用户确认成功通知
      *
      * @param paymentInfo 支付信息
      */
-    void onUserConfirm(PaymentInfo paymentInfo);
+    void onUserConfirm(PayScorePaymentInfo paymentInfo);
 
     /**
      * 用户支付成功时回调
      *
      * @param paymentInfo 支付信息
      */
-    void onUserPaid(PaymentInfo paymentInfo);
+    void onUserPaid(PayScorePaymentInfo paymentInfo);
 }

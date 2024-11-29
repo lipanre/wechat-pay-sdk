@@ -15,7 +15,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-public class PaymentInfo extends SearchPayScoreOrderResponse implements CallbackInfo {
+public class PayScorePaymentInfo extends SearchPayScoreOrderResponse implements CallbackInfo {
 
 
 

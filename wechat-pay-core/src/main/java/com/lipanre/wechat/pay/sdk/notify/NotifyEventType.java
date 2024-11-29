@@ -24,45 +24,45 @@ public enum NotifyEventType {
     /**
      * 退款成功通知
      */
-    REFUND_SUCCESS("REFUND.SUCCESS", RefundInfo.class,
-            (listener, data) -> listener.onRefundSuccess((RefundInfo) data)),
+    REFUND_SUCCESS("REFUND.SUCCESS", PayScoreRefundInfo.class,
+            (listener, data) -> listener.onRefundSuccess((PayScoreRefundInfo) data)),
 
     /**
      * 退款异常通知
      */
-    REFUND_ABNORMAL("REFUND.ABNORMAL", RefundInfo.class,
-            (listener, data) -> listener.onRefundAbnormal((RefundInfo) data)),
+    REFUND_ABNORMAL("REFUND.ABNORMAL", PayScoreRefundInfo.class,
+            (listener, data) -> listener.onRefundAbnormal((PayScoreRefundInfo) data)),
 
     /**
      * 退款关闭通知
      */
-    REFUND_CLOSED("REFUND.CLOSED", RefundInfo.class,
-            (listener, data) -> listener.onRefundClose((RefundInfo) data)),
+    REFUND_CLOSED("REFUND.CLOSED", PayScoreRefundInfo.class,
+            (listener, data) -> listener.onRefundClose((PayScoreRefundInfo) data)),
 
 
     /**
      * 授权成功通知
      */
-    PAYSCORE_USER_OPEN_SERVICE("PAYSCORE.USER_OPEN_SERVICE", PaymentInfo.class,
-            (listener, data) -> listener.onUserOpenService((PaymentInfo) data)),
+    PAYSCORE_USER_OPEN_SERVICE("PAYSCORE.USER_OPEN_SERVICE", PayScorePaymentInfo.class,
+            (listener, data) -> listener.onUserOpenService((PayScorePaymentInfo) data)),
 
     /**
      * 解除授权成功通知
      */
-    PAYSCORE_USER_CLOSE_SERVICE("PAYSCORE.USER_CLOSE_SERVICE", PaymentInfo.class,
-            (listener, data) -> listener.onUserCloseService((PaymentInfo) data)),
+    PAYSCORE_USER_CLOSE_SERVICE("PAYSCORE.USER_CLOSE_SERVICE", PayScorePaymentInfo.class,
+            (listener, data) -> listener.onUserCloseService((PayScorePaymentInfo) data)),
 
     /**
      * 用户确认成功通知
      */
-    PAYSCORE_USER_CONFIRM("PAYSCORE.USER_CONFIRM", PaymentInfo.class,
-            (listener, data) -> listener.onUserConfirm((PaymentInfo) data)),
+    PAYSCORE_USER_CONFIRM("PAYSCORE.USER_CONFIRM", PayScorePaymentInfo.class,
+            (listener, data) -> listener.onUserConfirm((PayScorePaymentInfo) data)),
 
     /**
      * 支付成功通知
      */
-    PAYSCORE_USER_PAID("PAYSCORE.USER_PAID", PaymentInfo.class,
-            (listener, data) -> listener.onUserPaid((PaymentInfo) data))
+    PAYSCORE_USER_PAID("PAYSCORE.USER_PAID", PayScorePaymentInfo.class,
+            (listener, data) -> listener.onUserPaid((PayScorePaymentInfo) data))
 
     ;
 

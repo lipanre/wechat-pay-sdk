@@ -1,9 +1,8 @@
 import com.lipanre.wechat.pay.sdk.model.request.AppletCreateOrderRequest;
-import com.lipanre.wechat.pay.sdk.notify.RefundInfo;
+import com.lipanre.wechat.pay.sdk.notify.PayScoreRefundInfo;
 import com.lipanre.wechat.pay.sdk.util.JsonUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -36,7 +35,7 @@ public class JacksonDeserializerTest {
                     }
                 }
                 """;
-        assertDoesNotThrow(() -> JsonUtil.fromJson(json, RefundInfo.class), "退款回调信息反序列化失败");
+        assertDoesNotThrow(() -> JsonUtil.fromJson(json, PayScoreRefundInfo.class), "退款回调信息反序列化失败");
     }
 
     @Test
