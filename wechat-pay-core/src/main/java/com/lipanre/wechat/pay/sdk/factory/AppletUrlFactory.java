@@ -17,7 +17,7 @@ public class AppletUrlFactory {
     /**
      * 创建订单
      */
-    private static final String CREATE_ORDER_API = "/v3/pay/transactions/jsapi";
+    private static final String CREATE_ORDER_API = "v3/pay/transactions/jsapi";
 
 
     /**
