@@ -4,6 +4,7 @@ import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.*;
 import com.lipanre.wechat.pay.sdk.model.request.*;
+import com.lipanre.wechat.pay.sdk.model.response.AppletCreateOrderResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -65,5 +66,13 @@ public interface Converter {
     @Mapping(target = "notifyUrl", expression = """
             java(payProperties.getCallbackUrl())
             """)
-    AppletCreateOrderRequest convert(AppletCreateOrderDTO appletCreateOrderDTO, MerchantProperties merchantProperties, PayProperties payProperties);
+    AppletCreateOrderRequest convert(AppletCreateOrderRequestDTO appletCreateOrderDTO, MerchantProperties merchantProperties, PayProperties payProperties);
+
+    /**
+     * 小程序下单响应转换为小程序下单响应dto
+     *
+     * @param response 响应对象
+     * @return 响应dto
+     */
+    AppletCreateOrderResponseDTO convert(AppletCreateOrderResponse response);
 }

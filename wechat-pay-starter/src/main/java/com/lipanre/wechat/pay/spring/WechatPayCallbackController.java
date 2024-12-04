@@ -41,7 +41,7 @@ public class WechatPayCallbackController {
                                    @RequestHeader("Wechatpay-Timestamp") String timestamp,
                                    @RequestHeader("Wechatpay-Signature") String signature,
                                    @RequestHeader("Wechatpay-Serial") String serialNumber,
-                                   @RequestBody String body) throws ValidationException, ParseException {
+                                   @RequestBody String body) {
         log.info("接收到微信回调: {}", body);
         NotificationRequest notificationRequest = notificationRequestBuilder.withSerialNumber(serialNumber)
                 .withNonce(nonce)

@@ -1,6 +1,5 @@
 package com.lipanre.wechat.pay.sdk.dto;
 
-import com.lipanre.wechat.pay.sdk.model.Amount;
 import com.lipanre.wechat.pay.sdk.model.AppletOrderAmount;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Data
 @RequiredArgsConstructor(staticName = "of")
-public class AppletCreateOrderDTO {
+public class AppletCreateOrderRequestDTO {
 
     /**
      * 【商户订单号】 商户系统内部订单号，只能是数字、大小写字母_-*且在同一个商户号下唯一。

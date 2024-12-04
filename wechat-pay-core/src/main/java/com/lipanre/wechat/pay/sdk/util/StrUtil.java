@@ -1,6 +1,11 @@
 package com.lipanre.wechat.pay.sdk.util;
 
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
+
 import java.util.Locale;
+import java.util.Random;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,5 +37,19 @@ public class StrUtil {
         }
         matcher.appendTail(sb);
         return sb.toString().toLowerCase(Locale.CHINA);
+    }
+
+    /**
+     * 生成指定长度的随机字符串
+     *
+     * @param length 字符串长度
+     * @return 随机字符串
+     */
+    public static String randomStr(int length) {
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        if (uuid.length() > length) {
+            return uuid.substring(0, length);
+        }
+        return uuid;
     }
 }

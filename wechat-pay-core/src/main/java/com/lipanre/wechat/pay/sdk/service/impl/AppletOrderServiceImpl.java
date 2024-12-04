@@ -4,13 +4,18 @@ import com.lipanre.wechat.pay.sdk.Converter;
 import com.lipanre.wechat.pay.sdk.HttpService;
 import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
-import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderDTO;
+import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderRequestDTO;
+import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderResponseDTO;
 import com.lipanre.wechat.pay.sdk.factory.AppletUrlFactory;
 import com.lipanre.wechat.pay.sdk.model.request.AppletCreateOrderRequest;
 import com.lipanre.wechat.pay.sdk.model.response.AppletCreateOrderResponse;
 import com.lipanre.wechat.pay.sdk.service.AppletOrderService;
+import com.lipanre.wechat.pay.sdk.util.StrUtil;
+import com.wechat.pay.contrib.apache.httpclient.auth.PrivateKeySigner;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
+
+import java.util.UUID;
 
 /**
  * {@code description}
@@ -22,6 +27,7 @@ import org.mapstruct.factory.Mappers;
 @RequiredArgsConstructor
 public class AppletOrderServiceImpl implements AppletOrderService {
 
+    public static final String SIGN_TYPE = "RSA";
     /**
      * 类型转换器
      */
@@ -42,10 +48,31 @@ public class AppletOrderServiceImpl implements AppletOrderService {
      */
     private final HttpService httpService;
 
+    /**
+     * 签名器
+     */
+    private final PrivateKeySigner signer;
+
 
     @Override
-    public AppletCreateOrderResponse createOrder(AppletCreateOrderDTO appletCreateOrderDTO) {
+    public AppletCreateOrderResponseDTO createOrder(AppletCreateOrderRequestDTO appletCreateOrderDTO) {
         AppletCreateOrderRequest appletCreateOrderRequest = converter.convert(appletCreateOrderDTO, merchantProperties, payProperties);
-        return httpService.post(AppletUrlFactory.getCreateOrderUrl(), appletCreateOrderRequest, AppletCreateOrderResponse.class);
+        AppletCreateOrderResponse response = httpService.post(AppletUrlFactory.getCreateOrderUrl(), appletCreateOrderRequest, AppletCreateOrderResponse.class);
+        AppletCreateOrderResponseDTO responseDTO = converter.convert(response);
+        buildSignInfo(responseDTO);
+        return responseDTO;
+    }
+
+    /**
+     * 构建签名信息
+     *
+     * @param dto 响应dto
+     */
+    private void buildSignInfo(AppletCreateOrderResponseDTO dto) {
+        dto.setAppId(payProperties.getAppId());
+        dto.setTimestamp((int) ((System.currentTimeMillis() + 5) / 1000));
+        dto.setNonceStr(StrUtil.randomStr(32));
+        dto.setSignType(SIGN_TYPE);
+        dto.setPaySign(signer.sign(dto.buildToken()).getSign());
     }
 }

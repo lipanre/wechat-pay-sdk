@@ -84,12 +84,23 @@ public class WechatPayConfiguration {
      * @return 证书管理器
      */
     @Bean
-    public CertificatesManager manager(MerchantProperties merchantProperties, PrivateKey privateKey) throws IOException, GeneralSecurityException, HttpCodeException {
+    public CertificatesManager manager(MerchantProperties merchantProperties, PrivateKeySigner signer) throws IOException, GeneralSecurityException, HttpCodeException {
         CertificatesManager manager = CertificatesManager.getInstance();
-        PrivateKeySigner signer = new PrivateKeySigner(merchantProperties.getApiSerialNum(), privateKey);
         WechatPay2Credentials credentials = new WechatPay2Credentials(merchantProperties.getMerchantId(), signer);
         manager.putMerchant(merchantProperties.getMerchantId(), credentials, merchantProperties.getApiKey().getBytes(StandardCharsets.UTF_8));
         return manager;
+    }
+
+    /**
+     * 签名器
+     *
+     * @param merchantProperties 商户配置属性
+     * @param privateKey 私钥key
+     * @return 签名器对象
+     */
+    @Bean
+    public PrivateKeySigner signer(MerchantProperties merchantProperties, PrivateKey privateKey) {
+        return new PrivateKeySigner(merchantProperties.getApiSerialNum(), privateKey);
     }
 
     /**
@@ -233,7 +244,8 @@ public class WechatPayConfiguration {
     @Bean
     public AppletOrderService appletOrderService(MerchantProperties merchantProperties,
                                                  PayProperties payProperties,
-                                                 HttpService httpService) {
-        return new AppletOrderServiceImpl(merchantProperties, payProperties, httpService);
+                                                 HttpService httpService,
+                                                 PrivateKeySigner signer) {
+        return new AppletOrderServiceImpl(merchantProperties, payProperties, httpService, signer);
     }
 }

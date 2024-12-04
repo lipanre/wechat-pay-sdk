@@ -1,8 +1,7 @@
 package com.lipanre.wechat.pay.sdk.service;
 
-import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderDTO;
-import com.lipanre.wechat.pay.sdk.model.request.AppletCreateOrderRequest;
-import com.lipanre.wechat.pay.sdk.model.response.AppletCreateOrderResponse;
+import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderRequestDTO;
+import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderResponseDTO;
 
 /**
  * {@code description}
@@ -19,6 +18,6 @@ public interface AppletOrderService {
      * @param appletCreateOrderDTO 小程序创建订单dto
      * @return 小程序创建订单响应
      */
-    AppletCreateOrderResponse createOrder(AppletCreateOrderDTO appletCreateOrderDTO);
+    AppletCreateOrderResponseDTO createOrder(AppletCreateOrderRequestDTO appletCreateOrderDTO);
 
 }
