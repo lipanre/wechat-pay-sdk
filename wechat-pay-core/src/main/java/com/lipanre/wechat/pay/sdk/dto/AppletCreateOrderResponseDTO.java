@@ -51,7 +51,7 @@ public class AppletCreateOrderResponseDTO {
         String token = this.appId + "\n"
                 + this.timestamp + "\n"
                 + this.nonceStr + "\n"
-                + "prepay_id=" + this.prepayId;
+                + this.prepayId + "\n";
         return token.getBytes(StandardCharsets.UTF_8);
     }
 }

@@ -74,5 +74,8 @@ public interface Converter {
      * @param response 响应对象
      * @return 响应dto
      */
+    @Mapping(target = "prepayId", expression = """
+            java("prepay_id=" + response.getPrepayId())
+            """)
     AppletCreateOrderResponseDTO convert(AppletCreateOrderResponse response);
 }
