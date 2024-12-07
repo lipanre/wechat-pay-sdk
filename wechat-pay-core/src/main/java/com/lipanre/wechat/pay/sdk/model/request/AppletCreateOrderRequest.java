@@ -4,15 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lipanre.wechat.pay.sdk.common.Constant;
-import com.lipanre.wechat.pay.sdk.model.AppletOrderAmount;
-import com.lipanre.wechat.pay.sdk.model.OrderGoodsDetail;
-import com.lipanre.wechat.pay.sdk.model.Payer;
-import com.lipanre.wechat.pay.sdk.model.SceneInfo;
+import com.lipanre.wechat.pay.sdk.model.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 /**
  * {@code description}
@@ -90,7 +86,7 @@ public class AppletCreateOrderRequest {
     /**
      * 【优惠功能】 优惠功能
      */
-    private Detail detail;
+    private AppletOrderDetail detail;
 
     /**
      * 【优惠功能】 优惠功能
@@ -100,42 +96,7 @@ public class AppletCreateOrderRequest {
     /**
      * 【结算信息】 结算信息
      */
-    private SettleInfo settleInfo;
+    private AppletSettleInfo settleInfo;
 
-
-    /**
-     * 【优惠功能】 优惠功能
-     */
-    @Data
-    public static class Detail {
-        /**
-         * 【订单原价】 1、商户侧一张小票订单可能被分多次支付，订单原价用于记录整张小票的交易金额。
-         */
-        private Long costPrice;
-
-        /**
-         * 【商品小票ID】 商家小票ID
-         */
-        private String invoiceId;
-
-        /**
-         * 【单品列表】 单品列表信息
-         * 条目个数限制：【1，6000】
-         */
-        private List<OrderGoodsDetail> goodsDetail;
-
-    }
-
-    /**
-     * 【结算信息】 结算信息
-     */
-    @Data
-    public static class SettleInfo {
-
-        /**
-         * 【是否指定分账】 是否指定分账，
-         */
-        private Boolean profitSharing;
-    }
 
 }
