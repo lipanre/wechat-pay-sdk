@@ -5,6 +5,7 @@ import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.*;
 import com.lipanre.wechat.pay.sdk.model.request.*;
 import com.lipanre.wechat.pay.sdk.model.response.AppletCreateOrderResponse;
+import com.lipanre.wechat.pay.sdk.model.response.AppletRefundOrderResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
@@ -78,4 +79,24 @@ public interface Converter {
             java("prepay_id=" + response.getPrepayId())
             """)
     AppletCreateOrderResponseDTO convert(AppletCreateOrderResponse response);
+
+    /**
+     * 小程序退款请求转换器
+     *
+     * @param appletRefundRequestDTO 小程序退款请求dto
+     * @param payProperties 支付相关配置属性
+     * @return 小程序退款请求对象
+     */
+    @Mapping(target = "notifyUrl", expression = """
+            java(payProperties.getCallbackUrl())
+            """)
+    AppletRefundOrderRequest convert(AppletRefundRequestDTO appletRefundRequestDTO, PayProperties payProperties);
+
+    /**
+     * 小程序退款响应转换
+     *
+     * @param response 小程序退款响应
+     * @return 小程序退款响应dto
+     */
+    AppletRefundResponseDTO convert(AppletRefundOrderResponse response);
 }

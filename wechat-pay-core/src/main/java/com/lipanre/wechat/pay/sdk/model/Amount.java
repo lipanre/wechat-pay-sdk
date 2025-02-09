@@ -19,7 +19,7 @@ public class Amount {
     /**
      * 退款金额
      */
-    private Long  refund;
+    private Long refund;
 
     /**
      * 退款出资账户及金额

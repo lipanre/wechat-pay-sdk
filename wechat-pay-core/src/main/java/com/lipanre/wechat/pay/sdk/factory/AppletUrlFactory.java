@@ -19,6 +19,11 @@ public class AppletUrlFactory {
      */
     private static final String CREATE_ORDER_API = "v3/pay/transactions/jsapi";
 
+    /**
+     * 退款url
+     */
+    private static final String REFUND_API = "v3/refund/domestic/refunds";
+
 
     /**
      * 创建订单url
@@ -26,7 +31,19 @@ public class AppletUrlFactory {
      * @return 创建订单url
      */
     public static String getCreateOrderUrl() {
-        return String.format(APPLET_PAY_HOST, CREATE_ORDER_API);
+        return getUrl(CREATE_ORDER_API);
     }
 
+    /**
+     * 退款请求url
+     *
+     * @return 退款请求url
+     */
+    public static String getRefundUrl() {
+        return getUrl(REFUND_API);
+    }
+
+    private static String getUrl(String api) {
+        return String.format(APPLET_PAY_HOST, api);
+    }
 }

@@ -39,7 +39,6 @@ public enum NotifyEventType {
     REFUND_CLOSED("REFUND.CLOSED", PayScoreRefundInfo.class,
             (listener, data) -> listener.onRefundClose((PayScoreRefundInfo) data)),
 
-
     /**
      * 授权成功通知
      */
@@ -64,8 +63,14 @@ public enum NotifyEventType {
     PAYSCORE_USER_PAID("PAYSCORE.USER_PAID", PayScorePaymentInfo.class,
             (listener, data) -> listener.onUserPaid((PayScorePaymentInfo) data)),
 
+    /**
+     * 小程序支付成功
+     */
     TRANSACTION_SUCCESS("TRANSACTION.SUCCESS", AppletPayment.class,
             (listener, data) -> listener.onAppletPaid((AppletPayment) data)),
+
+
+
     ;
 
     private final String code;

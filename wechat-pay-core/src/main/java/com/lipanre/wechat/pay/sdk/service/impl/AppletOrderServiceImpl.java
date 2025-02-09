@@ -6,16 +6,18 @@ import com.lipanre.wechat.pay.sdk.config.MerchantProperties;
 import com.lipanre.wechat.pay.sdk.config.PayProperties;
 import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderRequestDTO;
 import com.lipanre.wechat.pay.sdk.dto.AppletCreateOrderResponseDTO;
+import com.lipanre.wechat.pay.sdk.dto.AppletRefundRequestDTO;
+import com.lipanre.wechat.pay.sdk.dto.AppletRefundResponseDTO;
 import com.lipanre.wechat.pay.sdk.factory.AppletUrlFactory;
 import com.lipanre.wechat.pay.sdk.model.request.AppletCreateOrderRequest;
+import com.lipanre.wechat.pay.sdk.model.request.AppletRefundOrderRequest;
 import com.lipanre.wechat.pay.sdk.model.response.AppletCreateOrderResponse;
+import com.lipanre.wechat.pay.sdk.model.response.AppletRefundOrderResponse;
 import com.lipanre.wechat.pay.sdk.service.AppletOrderService;
 import com.lipanre.wechat.pay.sdk.util.StrUtil;
 import com.wechat.pay.contrib.apache.httpclient.auth.PrivateKeySigner;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
-
-import java.util.UUID;
 
 /**
  * {@code description}
@@ -61,6 +63,13 @@ public class AppletOrderServiceImpl implements AppletOrderService {
         AppletCreateOrderResponseDTO responseDTO = converter.convert(response);
         buildSignInfo(responseDTO);
         return responseDTO;
+    }
+
+    @Override
+    public AppletRefundResponseDTO refund(AppletRefundRequestDTO appletRefundRequestDTO) {
+        AppletRefundOrderRequest request = converter.convert(appletRefundRequestDTO, payProperties);
+        AppletRefundOrderResponse response = httpService.post(AppletUrlFactory.getRefundUrl(), request, AppletRefundOrderResponse.class);
+        return converter.convert(response);
     }
 
     /**
