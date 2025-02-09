@@ -3,12 +3,14 @@ package com.lipanre.wechat.pay.sdk.dto;
 import com.lipanre.wechat.pay.sdk.enums.AppletFundsAccount;
 import com.lipanre.wechat.pay.sdk.model.Amount;
 import com.lipanre.wechat.pay.sdk.model.OrderGoodsDetail;
+import lombok.Data;
 
 /**
  * 小程序退款请求dto
  *
  * @author lipanre
  */
+@Data
 public class AppletRefundRequestDTO {
 
     /**
