@@ -120,7 +120,9 @@ public class HttpService {
         // 判断是否请求异常
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode != SUCCESS && statusCode != SUCCESS_NO_REPLY) {
-            ErrorResponse errorResponse = JsonUtil.fromJson(EntityUtils.toString(response.getEntity()), ErrorResponse.class);
+            String responseJson = EntityUtils.toString(response.getEntity());
+            log.error("wechat pay request: statusCode = {}, responseJson = {}", statusCode, responseJson);
+            ErrorResponse errorResponse = JsonUtil.fromJson(responseJson, ErrorResponse.class);
             throw new WechatPayException(errorResponse.getMessage());
         }
         // 如果无响应，则返回空
