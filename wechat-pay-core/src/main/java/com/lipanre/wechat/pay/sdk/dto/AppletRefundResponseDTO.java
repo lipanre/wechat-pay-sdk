@@ -8,6 +8,7 @@ import com.lipanre.wechat.pay.sdk.model.AppletRefundPromotionDetail;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 小程序退款请求响应
@@ -84,6 +85,6 @@ public class AppletRefundResponseDTO {
     /**
      * 【退款商品】 指定商品退款时传的退款商品信息。
      */
-    private AppletRefundPromotionDetail promotionDetail;
+    private List<AppletRefundPromotionDetail> promotionDetail;
 
 }
