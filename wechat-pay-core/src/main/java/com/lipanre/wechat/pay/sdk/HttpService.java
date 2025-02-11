@@ -1,6 +1,7 @@
 package com.lipanre.wechat.pay.sdk;
 
 import com.lipanre.wechat.pay.sdk.exception.WechatPayException;
+import com.lipanre.wechat.pay.sdk.model.ErrorResponse;
 import com.lipanre.wechat.pay.sdk.util.JsonUtil;
 import com.lipanre.wechat.pay.sdk.util.StrUtil;
 import lombok.RequiredArgsConstructor;
@@ -119,7 +120,8 @@ public class HttpService {
         // 判断是否请求异常
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode != SUCCESS && statusCode != SUCCESS_NO_REPLY) {
-            throw new WechatPayException("微信支付接口请求异常: " + EntityUtils.toString(response.getEntity()));
+            ErrorResponse errorResponse = JsonUtil.fromJson(EntityUtils.toString(response.getEntity()), ErrorResponse.class);
+            throw new WechatPayException(errorResponse.getMessage());
         }
         // 如果无响应，则返回空
         if (statusCode == SUCCESS_NO_REPLY) {
