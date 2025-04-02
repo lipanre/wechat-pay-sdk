@@ -1,7 +1,9 @@
+import kotlin.math.sign
 
-//plugins {
-//    id("org.jreleaser") version "1.15.0" apply false
-//}
+plugins {
+    `maven-publish`
+    signing
+}
 
 buildscript {
 
@@ -56,86 +58,13 @@ subprojects {
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "maven-publish")
-//    apply(plugin = "org.jreleaser")
+    apply(plugin = "signing")
 
     configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-//        withJavadocJar()
         withSourcesJar()
     }
-
-
-//    configure<PublishingExtension> {
-//        publications {
-//            create<MavenPublication>("mavenJava") {
-//                from(components["java"])
-//                groupId = project.group.toString()
-//                artifactId = project.name
-//                version = project.version.toString()
-//
-//                pom {
-//                    name = "app"
-//                    description = "Sample application"
-//                    url = "https://github.com/aalmiray/app"
-//                    inceptionYear = "2021"
-//
-//                    licenses {
-//                        license {
-//                            name = "Apache-2.0"
-//                            url = "https://spdx.org/licenses/Apache-2.0.html"
-//                        }
-//                    }
-//
-//                    developers {
-//                        developer {
-//                            id = "MainTainer"
-//                            name = "lipanre"
-//                        }
-//                    }
-//
-//                    scm {
-//                        connection = "scm:git:https://github.com/aalmiray/app.git"
-//                        developerConnection = "scm:git:ssh://github.com/aalmiray/app.git"
-//                        url = "http://github.com/aalmiray/app"
-//                    }
-//                }
-//                versionMapping {
-//                    usage("java-api") {
-//                        fromResolutionOf("runtimeClasspath")
-//                    }
-//                    usage("java-runtime") {
-//                        fromResolutionResult()
-//                    }
-//                }
-//            }
-//        }
-//
-//        repositories {
-//            maven {
-//                url = uri(layout.buildDirectory.dir("staging-deploy"))
-//            }
-//        }
-//    }
-//
-//    configure<JReleaserExtension> {
-//        signing {
-//            setActive("ALWAYS")
-//            setMode("FILE")
-//            armored = true
-//            publicKey = "/Users/hanqf/develop_soft/gpg_key/hanqf/public.pgp"
-//            secretKey = "/Users/hanqf/develop_soft/gpg_key/hanqf/private.pgp"
-//        }
-//
-//        deploy {
-//            maven {
-//                mavenCentral {
-//                    setActive("ALWAYS")
-//                }
-//            }
-//        }
-//    }
-
 
     val implementation by configurations
     val annotationProcessor by configurations
@@ -145,29 +74,58 @@ subprojects {
         annotationProcessor(Dependencies.MAP_STRUCT_PROCESSOR)
     }
 
+    publishing {
+        publications {
+            create<MavenPublication>("mavenJava") {
+                from(components["java"]) // 适用于 Kotlin JVM 项目
 
-    afterEvaluate {
-        if (!project.name.endsWith("-example")) {
-            project.extensions.getByType<PublishingExtension>().apply {
-                publications {
-                    create<MavenPublication>("mavenJava") {
-                        from(components["java"])
-                        groupId = project.group.toString()
-                        artifactId = project.name
-                        version = project.version.toString()
-                    }
-                }
-                repositories {
-                    maven {
-                        url = uri("https://packages.aliyun.com/6721ee46cc7f222f53c841da/maven/2500548-snapshot-ycars7")
-                        credentials {
-                            username = "662367769bf402bca06965e4"
-                            password = "WbQuvKQ[oOSl"
+                groupId = group.toString() // 你的组织 ID（必须与 Sonatype 申请的匹配）
+                artifactId = "wechat-pay-sdk" // 你的库名称
+                version = version // 版本号
+
+                pom {
+                    name.set(artifactId)
+                    description.set("wechat pay sdk")
+                    url.set("https://github.com/lipanre/wechat-pay-sdk")
+
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                         }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("lipanre")
+                            name.set("lipanre")
+                            email.set("lipanre@gmail.com")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:git://github.com/lipanre/wechat-pay-sdk")
+                        developerConnection.set("scm:git:ssh://github.com/lipanre/wechat-pay-sdk")
+                        url.set("https://github.com/lipanre/wechat-pay-sdk")
                     }
                 }
             }
         }
+
+        repositories {
+            maven {
+                name = "sonatype"
+                url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/") // 适用于正式发布
+                credentials {
+                    username = project.findProperty("ossrhUsername") as String? ?: System.getenv("OSSRH_USERNAME")
+                    password = project.findProperty("ossrhPassword") as String? ?: System.getenv("OSSRH_PASSWORD")
+                }
+            }
+        }
+    }
+
+    signing {
+
     }
 
 }
