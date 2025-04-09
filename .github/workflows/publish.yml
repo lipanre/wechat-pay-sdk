@@ -21,7 +21,7 @@ jobs:
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         run: |
-          brew install gpg
+          apt install -y gpg
           echo "$SIGNING_KEY" | gpg --dearmor > ${HOME}/secring.gpg
 
       - name: 🐵init gradle
