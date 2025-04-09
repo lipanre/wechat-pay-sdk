@@ -44,7 +44,7 @@ allprojects {
         options.encoding = "UTF-8"
     }
 
-
+    version = "1.0.0"
 }
 
 subprojects {
@@ -76,7 +76,7 @@ subprojects {
             coordinates(
                 groupId = "io.github.lipanre",
                 artifactId = project.name,
-                version = "1.0.0"
+                version = project.version.toString()
             )
 
             // Configure POM metadata for the published artifact
