@@ -1,0 +1,21 @@
+name: "public to maven central"
+on:
+  push:
+    tags:
+      - "v*"
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐯checkout code
+        uses: actions/checkout@v4
+      - name: 🐣init java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 21
+      - name: 🐵init gradle
+        uses: gradle/actions/setup-gradle@v4
