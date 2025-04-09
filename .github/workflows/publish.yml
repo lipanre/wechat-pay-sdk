@@ -9,6 +9,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    name: Publish to Maven Central
     steps:
       - name: 🐯checkout code
         uses: actions/checkout@v4
@@ -21,7 +22,7 @@ jobs:
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
         run: |
-          sudo apt install -y gpg
+          sudo apt install -y gnupg
           sudo echo "$SIGNING_KEY" | gpg --dearmor > ${HOME}/secring.gpg
 
       - name: 🐵init gradle
