@@ -9,7 +9,7 @@ class Versions {
         /**
          * 微信http-client sdk v3版本
          */
-        const val WE_CHART_HTTP_CLIENT_V3_SDK: String = "0.4.8"
+        const val WE_CHART_HTTP_CLIENT_V3_SDK: String = "0.5.0"
 
         /**
          * hutool 版本
