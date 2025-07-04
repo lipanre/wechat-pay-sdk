@@ -1,10 +1,7 @@
 package com.lipanre.wechat.pay.sdk.dto;
 
 import com.lipanre.wechat.pay.sdk.Default;
-import com.lipanre.wechat.pay.sdk.model.Location;
-import com.lipanre.wechat.pay.sdk.model.PostDiscount;
-import com.lipanre.wechat.pay.sdk.model.PostPayment;
-import com.lipanre.wechat.pay.sdk.model.TimeRange;
+import com.lipanre.wechat.pay.sdk.model.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -58,6 +55,11 @@ public class CompletePayScoreOrderDTO {
      * 订单优惠标记
      */
     private String goodsTag;
+
+    /**
+     * 设备信息
+     */
+    private Device device;
 
     public CompletePayScoreOrderDTO(List<PostPayment> postPayments, Long totalAmount, TimeRange timeRange) {
         this.postPayments = postPayments;

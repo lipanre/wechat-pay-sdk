@@ -71,6 +71,11 @@ public class CreatePayScoreOrderDTO {
      */
     private String notifyUrl;
 
+    /**
+     * 设备信息
+     */
+    private Device device;
+
     public CreatePayScoreOrderDTO(String outOrderNo, String serviceIntroduction, TimeRange timeRange, RiskFund riskFund, String openId) {
         this.outOrderNo = outOrderNo;
         this.serviceIntroduction = serviceIntroduction;

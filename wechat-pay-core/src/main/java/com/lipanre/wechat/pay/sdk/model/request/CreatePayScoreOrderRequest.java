@@ -1,5 +1,6 @@
 package com.lipanre.wechat.pay.sdk.model.request;
 
+import com.lipanre.wechat.pay.sdk.model.Device;
 import com.lipanre.wechat.pay.sdk.model.OrderDetailModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,8 +27,9 @@ public class CreatePayScoreOrderRequest extends OrderDetailModel {
      */
     private Boolean needUserConfirm;
 
-
-
-
+    /**
+     * 设备信息
+     */
+    private Device device;
 
 }
