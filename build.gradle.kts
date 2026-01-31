@@ -44,7 +44,8 @@ allprojects {
         options.encoding = "UTF-8"
     }
 
-    version = "1.0.1"
+    group = "io.github.lipanre"
+    version = "1.0.2"
 }
 
 subprojects {

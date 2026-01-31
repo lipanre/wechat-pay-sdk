@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.SneakyThrows;
 
 /**
@@ -25,6 +26,7 @@ public class JsonUtil {
         // 注册所有序列化与反序列化模块
         objectMapper.findAndRegisterModules();
 
+        objectMapper.registerModule(new JavaTimeModule());
         // 如果字段为空，则不进行序列化
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
